@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepwell Housing — About Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent: #006D6B;
+    --stone: #E0F2F1;
+    --charcoal: #122B2A;
+    --white: #FFFFFF;
+    --gray-light: #C9D6D5;
+
+    /* About page tokens, aligned to site palette */
+    --ink: var(--charcoal);
+    --gray-mid: #3f4a49;
+    --gray-bg: var(--stone);
+    --hairline: var(--stone);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    height:100%;
+    font-family:'Inter', sans-serif;
+    color:var(--charcoal);
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 60px;
+    background:var(--white);
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+  .logo-text{
+    font-family:'Playfair Display', serif;
+    font-size:24px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    color:var(--charcoal);
+  }
+  .logo-arrow{
+    width:26px;
+    height:26px;
+    display:block;
+  }
+
+  .contact-info p{
+    font-size:14px;
+    color:var(--charcoal);
+    font-weight:500;
+  }
+
+  /* ---------- Navigation ---------- */
+  .site-nav{
+    width:100%;
+    background:var(--white);
+    border-top:1px solid #eef3f2;
+    border-bottom:1px solid #eef3f2;
+  }
+  .site-nav ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+    gap:48px;
+    padding:18px 60px;
+  }
+  .site-nav a{
+    text-decoration:none;
+    color:var(--charcoal);
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.03em;
+    padding-bottom:6px;
+    position:relative;
+    transition:opacity 0.2s ease;
+  }
+  .site-nav a:hover{
+    opacity:0.65;
+  }
+  .site-nav a.active{
+    font-weight:700;
+    border-bottom:2px solid var(--accent);
+  }
+
+  /* ============================================================
+     About Us — ultra-minimalist monochrome grid sections
+     ============================================================ */
+
+  /* ---------- 1. Hero ---------- */
+  .about-hero{
+    background:var(--white);
+    padding:160px 80px 120px;
+  }
+  .about-hero h1{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.1;
+    letter-spacing:0;
+    color:var(--charcoal);
+    max-width:15ch;
+    margin-bottom:48px;
+  }
+  .about-hero p{
+    font-family:'Inter', sans-serif;
+    font-size:clamp(18px, 2vw, 22px);
+    line-height:1.7;
+    color:var(--gray-mid);
+    max-width:58ch;
+  }
+
+  /* ---------- 2. Operational split ---------- */
+  .about-split{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:80px;
+    padding:0 80px 140px;
+  }
+  .about-split .ops p{
+    font-family:'Inter', sans-serif;
+    font-weight:500;
+    font-size:clamp(20px, 2.4vw, 28px);
+    line-height:1.6;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    max-width:32ch;
+  }
+  .about-split .mission{
+    border:1px solid var(--accent);
+    padding:48px;
+  }
+  .about-split .mission .label{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.2em;
+    color:var(--accent);
+    margin-bottom:24px;
+  }
+  .about-split .mission p{
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.8;
+    color:var(--ink);
+  }
+
+  /* ---------- 3. Four-pillar grid ---------- */
+  .pillars{
+    border-top:1px solid var(--hairline);
+    padding:120px 80px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:96px 64px;
+  }
+  .pillar h3{
+    font-family:'Inter', sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    color:var(--accent);
+    margin-bottom:16px;
+  }
+  .pillar p{
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    line-height:1.8;
+    color:var(--gray-mid);
+    max-width:40ch;
+  }
+
+  /* ---------- 4. Action index ---------- */
+  .action{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    padding:0 80px 140px;
+    align-items:start;
+  }
+  .action .quote{
+    border-left:2px solid var(--accent);
+    padding-left:32px;
+    font-family:'Inter', sans-serif;
+    font-weight:500;
+    font-size:clamp(20px, 2.2vw, 26px);
+    line-height:1.6;
+    letter-spacing:-0.01em;
+    color:var(--charcoal);
+    max-width:34ch;
+  }
+  .index-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .index-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--hairline);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.04em;
+    color:var(--charcoal);
+  }
+  .index-item:first-child{
+    border-top:1px solid var(--hairline);
+  }
+  .index-item .index-number{
+    color:var(--accent);
+    font-weight:700;
+    font-size:13px;
+    flex-shrink:0;
+  }
+  .index-item .index-label{
+    text-align:right;
+  }
+
+  /* ---------- 5. Grounding outro ---------- */
+  .outro{
+    background:var(--gray-bg);
+    padding:140px 80px;
+  }
+  .outro h2{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(32px, 4vw, 44px);
+    letter-spacing:0;
+    color:var(--charcoal);
+    max-width:20ch;
+    margin-bottom:32px;
+  }
+  .outro p{
+    font-family:'Inter', sans-serif;
+    font-size:18px;
+    line-height:1.85;
+    color:var(--gray-mid);
+    max-width:68ch;
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    width:100%;
+    background:var(--white);
+    border-top:3px solid var(--accent);
+  }
+
+  .footer-top{
+    max-width:1100px;
+    margin:0 auto;
+    padding:56px 60px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+  }
+
+  .footer-column h3{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:var(--accent);
+    margin-bottom:20px;
+  }
+
+  .footer-column ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .footer-column a{
+    text-decoration:none;
+    color:#3f4a49;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    transition:color 0.2s ease;
+  }
+  .footer-column a:hover{
+    color:var(--accent);
+  }
+
+  .footer-column .footer-text{
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:#3f4a49;
+    line-height:1.6;
+  }
+
+  .footer-bottom{
+    width:100%;
+    border-top:1px solid var(--stone);
+  }
+  .footer-bottom p{
+    text-align:center;
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    color:#9aa6a5;
+    padding:24px 0;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 900px){
+    .site-header{ padding:22px 28px; }
+    .site-nav ul{
+      flex-wrap:wrap;
+      gap:24px;
+      padding:16px 28px;
+    }
+
+    .about-hero{ padding:80px 28px 64px; }
+    .about-split{
+      grid-template-columns:1fr;
+      gap:48px;
+      padding:0 28px 80px;
+    }
+    .pillars{
+      grid-template-columns:1fr;
+      gap:56px;
+      padding:80px 28px;
+    }
+    .action{
+      grid-template-columns:1fr;
+      gap:48px;
+      padding:0 28px 80px;
+    }
+    .outro{ padding:80px 28px; }
+
+    .footer-top{
+      grid-template-columns:1fr;
+      gap:32px;
+      padding:48px 28px;
+    }
+  }
+
+  @media (max-width: 600px){
+    .site-header{
+      flex-direction:column;
+      gap:12px;
+      text-align:center;
+      padding:24px 20px;
+    }
+    .site-nav ul{
+      justify-content:flex-start;
+      gap:16px 22px;
+    }
+  }
+</style>
+</head>
+<body>
+
+      <!-- Header -->
+      <header class="site-header">
+        <a class="logo" href="index.html">
+          <span class="logo-text">STEPWELL HOUSING</span>
+          <img class="logo-arrow" src="https://placehold.co/24x24/ffffff/122b2a?text=%E2%86%97" alt="arrow icon">
+        </a>
+        <div class="contact-info">
+          <p>info@stepwellhousing.com</p>
+        </div>
+      </header>
+
+      <!-- Navigation -->
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="#">Landlords</a></li>
+          <li><a href="#">Maintenance and Repairs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- 1. Hero -->
+      <section class="about-hero">
+        <h1>About Stepwell Housing.</h1>
+        <p>Stepwell Housing provides safe, compliant and professionally managed accommodation solutions for local authorities, landlords and the communities they serve.</p>
+      </section>
+
+      <!-- 2. Operational split -->
+      <section class="about-split">
+        <div class="ops">
+          <p>We work closely with property owners and local authorities to deliver high-quality housing that offers stability for residents, reliable returns for landlords and professional management throughout.</p>
+        </div>
+        <div class="mission">
+          <p class="label">Our Mission</p>
+          <p>To provide safe, well-maintained and professionally managed accommodation that supports residents, delivers value to landlords and contributes to stronger communities.</p>
+        </div>
+      </section>
+
+      <!-- 3. Four-pillar grid -->
+      <section class="pillars">
+        <div class="pillar">
+          <h3>Integrity</h3>
+          <p>We act honestly and transparently in every relationship — with landlords, local authorities and the residents who call our properties home.</p>
+        </div>
+        <div class="pillar">
+          <h3>Quality</h3>
+          <p>Every property is maintained to a high standard, with regular inspections and prompt repairs that keep homes safe and comfortable.</p>
+        </div>
+        <div class="pillar">
+          <h3>Partnership</h3>
+          <p>We work alongside local authorities and property owners as long-term partners, built on trust and consistent, reliable service.</p>
+        </div>
+        <div class="pillar">
+          <h3>Responsibility</h3>
+          <p>We meet our obligations on safety, compliance and energy standards, and hold ourselves accountable to the communities we serve.</p>
+        </div>
+      </section>
+
+      <!-- 4. Action index -->
+      <section class="action">
+        <div class="quote">
+          <p>At Stepwell Housing, we believe quality accommodation provides more than just a place to live. It creates stability, dignity and opportunity. We are committed to:</p>
+        </div>
+        <div class="index-list">
+          <div class="index-item">
+            <span class="index-number">01</span>
+            <span class="index-label">Safe, compliant homes</span>
+          </div>
+          <div class="index-item">
+            <span class="index-number">02</span>
+            <span class="index-label">Responsive management</span>
+          </div>
+          <div class="index-item">
+            <span class="index-number">03</span>
+            <span class="index-label">Resident wellbeing</span>
+          </div>
+          <div class="index-item">
+            <span class="index-number">04</span>
+            <span class="index-label">Energy efficiency</span>
+          </div>
+          <div class="index-item">
+            <span class="index-number">05</span>
+            <span class="index-label">Long-term partnerships</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Grounding outro -->
+      <section class="outro">
+        <h2>Supporting Communities.</h2>
+        <p>Good housing helps create stronger communities. When homes are safe, well managed and properly maintained, residents are more settled, landlords see consistent returns and local authorities can rely on a stable supply of quality accommodation. Our goal is simple: to provide safe, compliant and professionally managed accommodation that benefits people, properties and communities.</p>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-top">
+
+          <!-- Column 1: Menu -->
+          <div class="footer-column">
+            <h3>Menu</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Services -->
+          <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="contact.html">Guaranteed Rent</a></li>
+              <li><a href="contact.html">Fully Managed Service</a></li>
+              <li><a href="contact.html">In-House Maintenance</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Get in Touch -->
+          <div class="footer-column">
+            <h3>Get in Touch</h3>
+            <ul>
+              <li class="footer-text">07424119632</li>
+              <li class="footer-text">Info@stepwellhousing.com</li>
+              <li class="footer-text">Airport House Business Centre, 265 Purley Way, Croydon CR0 0XZ</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Stepwell Housing. All rights reserved.</p>
+        </div>
+      </footer>
+
+</body>
+</html>
