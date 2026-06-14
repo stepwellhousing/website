@@ -1,500 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stepwell House — Premium Property Management</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --accent: #006D6B;
-    --stone: #E0F2F1;
-    --charcoal: #122B2A;
-    --white: #FFFFFF;
-    --gray-light: #C9D6D5;
-  }
-
-  *{ margin:0; padding:0; box-sizing:border-box; }
-
-  html,body{
-    height:100%;
-    font-family:'Inter', sans-serif;
-    color:var(--charcoal);
-  }
-
-  /* ---------- Header ---------- */
-  .site-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:28px 60px;
-    background:var(--white);
-  }
-
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-  }
-  .logo-text{
-    font-family:'Playfair Display', serif;
-    font-size:24px;
-    font-weight:600;
-    letter-spacing:0.06em;
-    color:var(--charcoal);
-  }
-  .logo-arrow{
-    width:26px;
-    height:26px;
-    display:block;
-  }
-
-  .contact-info p{
-    font-size:14px;
-    color:var(--charcoal);
-    font-weight:500;
-  }
-
-  /* ---------- Navigation ---------- */
-  .site-nav{
-    width:100%;
-    background:var(--white);
-    border-top:1px solid #eef3f2;
-    border-bottom:1px solid #eef3f2;
-  }
-  .site-nav ul{
-    display:flex;
-    justify-content:center;
-    list-style:none;
-    gap:48px;
-    padding:18px 60px;
-  }
-  .site-nav a{
-    text-decoration:none;
-    color:var(--charcoal);
-    font-size:14px;
-    font-weight:500;
-    letter-spacing:0.03em;
-    padding-bottom:6px;
-    position:relative;
-    transition:opacity 0.2s ease;
-  }
-  .site-nav a:hover{
-    opacity:0.65;
-  }
-  .site-nav a.active{
-    font-weight:700;
-    border-bottom:2px solid var(--accent);
-  }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    position:relative;
-    width:100%;
-    min-height:560px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:60px 24px;
-  }
-
-  .hero-slide{
-    position:absolute;
-    inset:0;
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    opacity:0;
-    z-index:0;
-    transition:opacity 1.5s ease-in-out;
-  }
-  .hero-slide.active{
-    opacity:1;
-  }
-  .hero-slide.slide-1{
-    background-image:
-      linear-gradient(rgba(18,43,42,0.62), rgba(18,43,42,0.68)),
-      url('stepwell-interior.png');
-  }
-  .hero-slide.slide-2{
-    background-image:
-      linear-gradient(rgba(18,43,42,0.72), rgba(18,43,42,0.78)),
-      url('stepwell-elevation.png');
-  }
-  .hero-slide.slide-3{
-    background-image:
-      linear-gradient(rgba(18,43,42,0.55), rgba(18,43,42,0.62)),
-      url('stepwell-cityscape.png');
-  }
-
-  .hero-content,
-  .carousel-dots{
-    position:relative;
-    z-index:1;
-  }
-
-  .hero-content{
-    max-width:680px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:22px;
-  }
-
-  .hero h1{
-    font-family:'Playfair Display', serif;
-    font-weight:700;
-    font-size:44px;
-    line-height:1.25;
-    color:var(--white);
-    letter-spacing:0.02em;
-  }
-
-  .hero p{
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.7;
-    color:var(--white);
-    max-width:540px;
-  }
-
-  .cta-button{
-    margin-top:6px;
-    background:var(--accent);
-    color:var(--white);
-    font-family:'Inter', sans-serif;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:0.12em;
-    border:none;
-    border-radius:0;
-    padding:16px 38px;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-block;
-    transition:background 0.2s ease;
-  }
-  .cta-button:hover{
-    background:#005351;
-  }
-
-  .carousel-dots{
-    position:absolute;
-    bottom:32px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:10px;
-  }
-  .carousel-dots button{
-    width:9px;
-    height:9px;
-    padding:0;
-    border-radius:50%;
-    border:none;
-    background:#D9D9D9;
-    display:block;
-    cursor:pointer;
-    transition:background 0.3s ease, transform 0.2s ease;
-  }
-  .carousel-dots button:hover{
-    transform:scale(1.2);
-  }
-  .carousel-dots button.active{
-    background:var(--accent);
-  }
-
-  /* ---------- Services ---------- */
-  .services{
-    width:100%;
-    background:var(--white);
-    padding:80px 60px 100px;
-  }
-
-  .services h2{
-    font-family:'Playfair Display', serif;
-    font-weight:600;
-    font-size:40px;
-    text-align:center;
-    color:var(--charcoal);
-    margin-bottom:24px;
-  }
-
-  .services-divider{
-    width:50%;
-    max-width:50%;
-    height:1px;
-    background:#000000;
-    margin:0 auto 56px;
-  }
-
-  .services-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:32px;
-    max-width:1100px;
-    margin:0 auto;
-  }
-
-  .service-card{
-    background:var(--white);
-    border:1.5px solid var(--accent);
-    border-radius:24px;
-    box-shadow:0 25px 60px -20px rgba(18,43,42,0.18);
-    padding:0 32px 36px;
-    display:flex;
-    flex-direction:column;
-    height:100%;
-    overflow:hidden;
-  }
-
-  .service-card-header{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-
-  .service-icon{
-    width:100%;
-    margin:12px 0 20px;
-    height:220px;
-    object-fit:contain;
-    display:block;
-  }
-
-  .service-card h3{
-    font-family:'Inter', sans-serif;
-    font-weight:800;
-    font-size:22px;
-    color:var(--accent);
-    margin-bottom:24px;
-  }
-
-  .service-list{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    margin-bottom:32px;
-    flex-grow:1;
-  }
-
-  .service-list li{
-    display:flex;
-    align-items:flex-start;
-    gap:14px;
-    font-family:'Inter', sans-serif;
-    font-weight:600;
-    font-size:18px;
-    line-height:1.7;
-    letter-spacing:0.01em;
-    color:#000000;
-  }
-
-  .service-check{
-    width:20px;
-    height:20px;
-    flex-shrink:0;
-    margin-top:3px;
-    stroke:var(--accent);
-    stroke-width:3.5;
-    fill:none;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-  }
-
-  .service-button{
-    margin-top:auto;
-    width:100%;
-    background:var(--accent);
-    color:var(--white);
-    font-family:'Inter', sans-serif;
-    font-weight:600;
-    font-size:13px;
-    letter-spacing:0.12em;
-    border:none;
-    border-radius:0;
-    padding:16px 28px;
-    cursor:pointer;
-    text-decoration:none;
-    text-align:center;
-    display:block;
-    transition:background 0.2s ease;
-  }
-  .service-button:hover{
-    background:#005351;
-  }
-
-  /* ============ Responsive ============ */
-  @media (max-width: 900px){
-    .site-header{ padding:22px 28px; }
-    .site-nav ul{
-      flex-wrap:wrap;
-      gap:24px;
-      padding:16px 28px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aadhini and Nidhiyan's Birthday Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      background-color: #fff8f0;
+      color: #333;
     }
-    .services{ padding:60px 28px 70px; }
-    .services h2{ font-size:32px; }
-    .services-grid{
-      grid-template-columns:1fr;
-      gap:24px;
+    h1 {
+      text-align: center;
+      color: #8e44ad;
+      margin-bottom: 20px;
+      font-size: 3em;
+      font-family: 'Pacifico', cursive;
     }
-    .hero h1{ font-size:32px; }
-    .hero{ min-height:480px; padding:50px 20px; }
-  }
-
-  @media (max-width: 600px){
-    .site-header{
-      flex-direction:column;
-      gap:12px;
-      text-align:center;
-      padding:24px 20px;
+    .hero-image {
+      text-align: center;
+      margin-bottom: 40px;
     }
-    .site-nav ul{
-      justify-content:flex-start;
-      gap:16px 22px;
+    .hero-image img {
+      max-height: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .hero h1{ font-size:26px; }
-    .hero p{ font-size:14px; }
-  }
-</style>
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f5e1f7;
+      color: #4a235a;
+      font-weight: bold;
+    }
+    tr:nth-child(even) td {
+      background-color: #fafafa;
+    }
+    table img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
+  <h1>Aadhini and Nidhiyan's Birthday Menu</h1>
+	<p style="text-align: center; color: #555; font-size: 1em; margin: 5px auto 30px; max-width: 1000px;">
+  <Strong> These are popular ingredients used in these dishes, but they may not represent the exact recipe. Please check carefully if you have any allergies or dietary restrictions. </Strong>
+	</p>
 
-      <!-- Header -->
-      <header class="site-header">
-        <a class="logo" href="index.html">
-          <span class="logo-text">STEPWELL HOUSE</span>
-          <img class="logo-arrow" src="https://placehold.co/24x24/ffffff/122b2a?text=%E2%86%97" alt="arrow icon">
-        </a>
-        <div class="contact-info">
-          <p>info@stepwellhouse.com</p>
-        </div>
-      </header>
+  <h2>Learn more about your Starters</h2>
+  <table>
+      <th>Dish</th>
+      <th>Image</th>
+      <th>Definition</th>
+      <th>Common Ingredients</th>
+      <th>Possible Allergies</th>
+    </tr>
+    <tr>
+      <td>Veg Samosa</td>
+      <td><img src="https://xantilicious.com/wp-content/uploads/2017/07/for-site-4.jpg" alt="Veg Samosa" height="60"></td>
+      <td>A deep-fried pastry filled with spiced vegetables.</td>
+      <td>Potatoes, peas, carrots, onion, cumin, coriander, chili, flour-based dough.</td>
+      <td>Gluten (dough), nightshades (potato, chili), sometimes dairy (in dough or filling).</td>
+    </tr>
+    <tr>
+      <td>Mutton Roll</td>
+      <td><img src="https://bookmycomfort.wordpress.com/wp-content/uploads/2013/01/meatpacket-cut.jpg?w=972" alt="Mutton Roll" height="60"></td>
+      <td>A spicy meat-filled pastry snack popular in Sri Lankan cuisine.</td>
+      <td>Mutton, potato, onion, green chili, curry leaves, spices, flour-based wrap, egg (coating), breadcrumbs.</td>
+      <td>Gluten, egg, meat (mutton), nightshades (chili), dairy (if used in mash).</td>
+    </tr>
+    <tr>
+      <td>Sri Lankan Fish Cutlet</td>
+      <td><img src="https://farm1.staticflickr.com/574/21675171075_aa3f4aee6b_o.jpg" height="60"></td>
+      <td>A deep-fried ball of spicy fish and mashed potato.</td>
+      <td>Tuna or mackerel, potato, green chili, onion, garlic, curry leaves, spices, egg, breadcrumbs.</td>
+      <td>Fish, egg, gluten (breadcrumbs), nightshades (chili).</td>
+    </tr>
+    <tr>
+      <td>Chicken 65</td>
+      <td><img src="https://tandooriflamesmelbourne.com.au/wp-content/uploads/2019/03/Chicken-65-1.jpg" alt="Chicken 65" height="60"></td>
+      <td>A spicy South Indian deep-fried chicken starter.</td>
+      <td>Chicken, yogurt, garlic, ginger, red chili powder, curry leaves, cornflour, rice flour, lemon juice.</td>
+      <td>Dairy (yogurt), gluten (flour), egg (if used), nightshades (chili).</td>
+    </tr>
+  </table>
 
-      <!-- Navigation -->
-      <nav class="site-nav">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Landlords</a></li>
-          <li><a href="#">Maintenance and Repairs</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-
-      <!-- Hero -->
-      <section class="hero">
-        <div class="hero-slide slide-1 active"></div>
-        <div class="hero-slide slide-2"></div>
-        <div class="hero-slide slide-3"></div>
-        <div class="hero-content">
-          <h1>EXPERIENCE PREMIUM PROPERTY MANAGEMENT</h1>
-          <p>We experience premium property management services in London apartment on mainirenancy and propertescal acountents.</p>
-          <a class="cta-button" href="contact.html">LEARN MORE</a>
-        </div>
-        <div class="carousel-dots">
-          <button class="active" aria-label="Show slide 1" data-slide="0"></button>
-          <button aria-label="Show slide 2" data-slide="1"></button>
-          <button aria-label="Show slide 3" data-slide="2"></button>
-        </div>
-      </section>
-
-      <!-- Our Services -->
-      <section class="services">
-        <h2>Our Services</h2>
-        <div class="services-divider"></div>
-        <div class="services-grid">
-
-          <div class="service-card">
-            <div class="service-card-header">
-              <img class="service-icon" src="stepwell-guaranteed-rent-icon.png?v=2" alt="Guaranteed Rent icon">
-              <h3>Guaranteed Rent</h3>
-            </div>
-            <ul class="service-list">
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Fixed monthly payments, whatever happens</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>No void period concerns</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Predictable, consistent cash flow</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Rent paid to you on time, every time</li>
-            </ul>
-            <a class="service-button" href="contact.html">LEARN MORE</a>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card-header">
-              <img class="service-icon" src="stepwell-managed-service-icon.png" alt="Fully Managed Service icon">
-              <h3>Fully Managed Service</h3>
-            </div>
-            <ul class="service-list">
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Complete day-to-day property management</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Direct tenant communication handled for you</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Minimal involvement required from landlords</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Regular property oversight and reporting</li>
-            </ul>
-            <a class="service-button" href="contact.html">LEARN MORE</a>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card-header">
-              <img class="service-icon" src="stepwell-maintenance-icon.png" alt="Repairs and Maintenance icon">
-              <h3>Repairs and Maintenance</h3>
-            </div>
-            <ul class="service-list">
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Dedicated in-house maintenance professionals</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Trusted network of specialist contractors</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Proactive, scheduled maintenance checks</li>
-              <li><svg class="service-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>High-quality workmanship guaranteed</li>
-            </ul>
-            <a class="service-button" href="contact.html">LEARN MORE</a>
-          </div>
-
-        </div>
-      </section>
-
-<script>
-  (function(){
-    var slides = document.querySelectorAll('.hero-slide');
-    var dots = document.querySelectorAll('.carousel-dots button');
-    var current = 0;
-    var holdTime = 10000; // 10 seconds
-    var timer;
-
-    function goToSlide(index){
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = index;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }
-
-    function nextSlide(){
-      goToSlide((current + 1) % slides.length);
-    }
-
-    function startAutoRotate(){
-      clearInterval(timer);
-      timer = setInterval(nextSlide, holdTime);
-    }
-
-    dots.forEach(function(dot, index){
-      dot.addEventListener('click', function(){
-        if(index !== current){
-          goToSlide(index);
-        }
-        startAutoRotate();
-      });
-    });
-
-    startAutoRotate();
-  })();
-</script>
-
+  <h2>What's for Main Course?</h2>
+  <table>
+      <th>Image</th>
+      <th>Dish</th>
+      <th>Definition</th>
+      <th>Common Ingredients</th>
+      <th>Possible Allergies</th>
+    </tr>
+    <tr>
+      <td>Vegetarian Fried Rice</td>
+      <td><img src="https://www.grandchancellor.lk/wp-content/uploads/2021/11/013.jpg" alt="Vegetarian Fried Rice" height="60"></td>
+      <td>A stir-fried rice dish cooked with vegetables and spices.</td>
+      <td>Basmati rice, carrots, peas, bell peppers, soy sauce, garlic, ginger, spring onions, oil.</td>
+      <td>Soy (soy sauce), gluten (soy sauce), sesame (if oil used).</td>
+    </tr>
+    <tr>
+      <td>Aubergine Pirratal</td>
+      <td><img src="https://greatcurryrecipes.net/wp-content/uploads/2021/12/aub2.jpg" alt="Aubergine Pirratal" height="60"></td>
+      <td>A dry-style Indian curry made with spiced, sautéed eggplant.</td>
+      <td>Aubergine, onion, tomato, garlic, ginger, turmeric, cumin, coriander, chili powder, mustard seeds, oil.</td>
+      <td>Mustard (seeds or oil), nightshades (eggplant, tomato, chili), gluten (in spices).</td>
+    </tr>
+    <tr>
+      <td>Mysoor Dhaal</td>
+      <td><img src="https://cdn.indiaphile.info/wp-content/uploads/2023/03/stp-masoor-dal-0041.jpg" alt="Mysoor Dhaal" height="60"></td>
+      <td>A smooth, mildly spiced South Indian lentil dish made from red lentils.</td>
+      <td>Red lentils, tomato, turmeric, mustard seeds, curry leaves, cumin, garlic, ghee or oil.</td>
+      <td>Mustard seeds, dairy (ghee), legumes (lentils), gluten (if hing/spice blends used).</td>
+    </tr>
+    <tr>
+      <td>Chili Paneer</td>
+      <td><img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/chilli-paneer-recipe.jpg" alt="Chili Paneer" height="60"></td>
+      <td>An Indo-Chinese dish with fried paneer in a spicy, tangy sauce.</td>
+      <td>Paneer, bell peppers, onion, green chili, soy sauce, garlic, ginger, cornflour, vinegar.</td>
+      <td>Dairy (paneer), soy (soy sauce), gluten (soy sauce/cornflour), nightshades.</td>
+    </tr>
+    <tr>
+      <td>Tandoori Chicken Pieces</td>
+      <td><img src="https://www.cubesnjuliennes.com/wp-content/uploads/2022/12/Tandoori-Chicken-Recipe.jpg" height="60"></td>
+      <td>Chicken marinated in yogurt and spices, then roasted or grilled.</td>
+      <td>Chicken, yogurt, lemon juice, garlic, ginger, chili powder, cumin, garam masala.</td>
+      <td>Dairy (yogurt), spices (garam masala), nightshades (chili).</td>
+    </tr>
+    <tr>
+      <td>Sri Lankan Tamil Chicken Curry</td>
+      <td><img src="https://www.marionskitchen.com/wp-content/uploads/2021/11/Weeknight-Creamy-Sri-Lankan-Chicken-Curry-01-1200x1500.jpg" alt="Sri Lankan Tamil Chicken Curry" height="60"></td>
+      <td>A spicy, rich curry made with chicken, roasted spices, and coconut milk.</td>
+      <td>Chicken, onion, garlic, ginger, curry leaves, chili, roasted curry powder, coconut milk.</td>
+      <td>Coconut, nightshades (chili), spices.</td>
+    </tr>
+    <tr>
+      <td>Red Onion & Tomato Salad</td>
+      <td><img src="https://busycooks.com/wp-content/uploads/2025/05/Tomato-Onion-Salad-1.jpg" alt="Red Onion & Tomato Salad" height="60"></td>
+      <td>A fresh salad combining sliced onions and tomatoes with light seasoning.</td>
+      <td>Red onion, tomato, lemon juice, green chili, coriander, salt, pepper.</td>
+      <td>Nightshades (tomato, chili), onion sensitivity.</td>
+    </tr>
+    <tr>
+      <td>Pappadom</td>
+      <td><img src="https://m.media-amazon.com/images/I/31PFCnF+Z9L._UF350,350_QL80_.jpg" alt="Pappadom" height="60"></td>
+      <td>A thin, crispy Indian wafer made from lentil flour, usually fried or roasted.</td>
+      <td>Urad dal (black gram) flour, salt, oil, optional cumin or black pepper.</td>
+      <td>Legumes (urad dal), gluten (in some varieties), sesame (if added).</td>
+    </tr>
+  </table>
 </body>
 </html>
