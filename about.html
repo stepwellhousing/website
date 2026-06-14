@@ -103,7 +103,7 @@
   /* ---------- 1. Hero ---------- */
   .about-hero{
     background:var(--white);
-    padding:160px 80px 120px;
+    padding:80px 80px 56px;
   }
   .about-hero h1{
     font-family:'Playfair Display', serif;
@@ -113,59 +113,84 @@
     letter-spacing:0;
     color:var(--charcoal);
     max-width:15ch;
-    margin-bottom:48px;
+    margin-bottom:28px;
   }
   .about-hero p{
     font-family:'Inter', sans-serif;
     font-size:clamp(18px, 2vw, 22px);
     line-height:1.7;
     color:var(--gray-mid);
-    max-width:58ch;
+    max-width:90ch;
   }
 
-  /* ---------- 2. Operational split ---------- */
-  .about-split{
-    display:grid;
-    grid-template-columns:1.3fr 1fr;
-    gap:80px;
-    padding:0 80px 140px;
+  /* ---------- 2. Operations statement (full width) ---------- */
+  .about-ops{
+    padding:0 80px 48px;
   }
-  .about-split .ops p{
+  .about-ops p{
     font-family:'Inter', sans-serif;
     font-weight:500;
     font-size:clamp(20px, 2.4vw, 28px);
     line-height:1.6;
     letter-spacing:-0.01em;
-    color:var(--ink);
-    max-width:32ch;
+    color:var(--charcoal);
+    max-width:90ch;
   }
-  .about-split .mission{
-    border:1px solid var(--accent);
-    padding:48px;
+
+  /* ---------- Mission hero panel ---------- */
+  .mission-panel{
+    position:relative;
+    width:100%;
+    min-height:340px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:64px 80px;
+    margin-bottom:64px;
+    background:
+      linear-gradient(rgba(18,43,42,0.5), rgba(18,43,42,0.5)),
+      url('stepwell-mission-bg.png') center/cover no-repeat;
   }
-  .about-split .mission .label{
+  .mission-panel .mission-content{
+    max-width:80ch;
+    margin:0 auto;
+  }
+  .mission-panel .label{
     font-family:'Inter', sans-serif;
     font-size:12px;
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.2em;
-    color:var(--accent);
-    margin-bottom:24px;
+    color:var(--white);
+    margin-bottom:20px;
   }
-  .about-split .mission p{
+  .mission-panel .quote-text{
     font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.8;
-    color:var(--ink);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(20px, 2.6vw, 30px);
+    line-height:1.6;
+    color:var(--white);
+    margin-bottom:20px;
+  }
+  .mission-panel .quote-attribution{
+    font-family:'Inter', sans-serif;
+    font-style:normal;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.05em;
+    color:var(--white);
+    opacity:0.85;
   }
 
   /* ---------- 3. Four-pillar grid ---------- */
   .pillars{
     border-top:1px solid var(--hairline);
-    padding:120px 80px;
+    padding:64px 80px;
     display:grid;
     grid-template-columns:repeat(2, 1fr);
-    gap:96px 64px;
+    gap:56px 48px;
   }
   .pillar h3{
     font-family:'Inter', sans-serif;
@@ -183,59 +208,62 @@
     max-width:40ch;
   }
 
-  /* ---------- 4. Action index ---------- */
-  .action{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    padding:0 80px 140px;
-    align-items:start;
+  /* ---------- 4. Action statement + commitments grid ---------- */
+  .action-statement{
+    padding:0 80px 40px;
   }
-  .action .quote{
-    border-left:2px solid var(--accent);
-    padding-left:32px;
+  .action-statement p{
     font-family:'Inter', sans-serif;
     font-weight:500;
-    font-size:clamp(20px, 2.2vw, 26px);
+    font-size:clamp(20px, 2.4vw, 28px);
     line-height:1.6;
     letter-spacing:-0.01em;
     color:var(--charcoal);
-    max-width:34ch;
+    max-width:90ch;
   }
-  .index-list{
-    display:flex;
-    flex-direction:column;
-  }
-  .index-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
+
+  .commitments-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
     gap:24px;
-    padding:22px 0;
-    border-bottom:1px solid var(--hairline);
-    font-family:'Inter', sans-serif;
-    font-weight:600;
-    font-size:14px;
-    letter-spacing:0.04em;
-    color:var(--charcoal);
+    padding:0 80px 64px;
   }
-  .index-item:first-child{
-    border-top:1px solid var(--hairline);
+  .commitment-card{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    padding:24px;
+    border:1px solid var(--stone);
+    border-radius:12px;
   }
-  .index-item .index-number{
-    color:var(--accent);
-    font-weight:700;
-    font-size:13px;
+  .commitment-card:last-child{
+    grid-column:span 1;
+  }
+  .commitment-number{
     flex-shrink:0;
+    width:64px;
+    height:64px;
+    border-radius:12px;
+    background:var(--stone);
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Inter', sans-serif;
+    font-weight:800;
+    font-size:24px;
   }
-  .index-item .index-label{
-    text-align:right;
+  .commitment-label{
+    font-family:'Inter', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    color:var(--charcoal);
   }
 
   /* ---------- 5. Grounding outro ---------- */
   .outro{
     background:var(--gray-bg);
-    padding:140px 80px;
+    padding:80px 80px;
   }
   .outro h2{
     font-family:'Playfair Display', serif;
@@ -326,23 +354,30 @@
       padding:16px 28px;
     }
 
-    .about-hero{ padding:80px 28px 64px; }
-    .about-split{
-      grid-template-columns:1fr;
-      gap:48px;
-      padding:0 28px 80px;
+    .about-hero{ padding:56px 28px 40px; }
+    .about-ops{ padding:0 28px 40px; }
+    .mission-panel{
+      padding:48px 28px;
+      min-height:280px;
+      margin-bottom:48px;
     }
     .pillars{
       grid-template-columns:1fr;
-      gap:56px;
-      padding:80px 28px;
-    }
-    .action{
-      grid-template-columns:1fr;
       gap:48px;
-      padding:0 28px 80px;
+      padding:48px 28px;
     }
-    .outro{ padding:80px 28px; }
+    .action-statement{
+      padding:0 28px 24px;
+    }
+    .commitments-grid{
+      grid-template-columns:1fr;
+      gap:16px;
+      padding:0 28px 48px;
+    }
+    .commitment-card:last-child{
+      grid-column:auto;
+    }
+    .outro{ padding:48px 28px; }
 
     .footer-top{
       grid-template-columns:1fr;
@@ -395,14 +430,17 @@
         <p>Stepwell Housing provides safe, compliant and professionally managed accommodation solutions for local authorities, landlords and the communities they serve.</p>
       </section>
 
-      <!-- 2. Operational split -->
-      <section class="about-split">
-        <div class="ops">
-          <p>We work closely with property owners and local authorities to deliver high-quality housing that offers stability for residents, reliable returns for landlords and professional management throughout.</p>
-        </div>
-        <div class="mission">
+      <!-- 2. Operations statement -->
+      <section class="about-ops">
+        <p>We work closely with property owners and local authorities to deliver high-quality housing that offers stability for residents, reliable returns for landlords and professional management throughout.</p>
+      </section>
+
+      <!-- Mission hero panel -->
+      <section class="mission-panel">
+        <div class="mission-content">
           <p class="label">Our Mission</p>
-          <p>To provide safe, well-maintained and professionally managed accommodation that supports residents, delivers value to landlords and contributes to stronger communities.</p>
+          <p class="quote-text">&ldquo;To provide safe, well-maintained and professionally managed accommodation that supports residents, delivers value to landlords and contributes to stronger communities.&rdquo;</p>
+          <p class="quote-attribution">Tenesh Deva &mdash; Co-Founder</p>
         </div>
       </section>
 
@@ -426,32 +464,31 @@
         </div>
       </section>
 
-      <!-- 4. Action index -->
-      <section class="action">
-        <div class="quote">
-          <p>At Stepwell Housing, we believe quality accommodation provides more than just a place to live. It creates stability, dignity and opportunity. We are committed to:</p>
+      <!-- 4. Action statement + commitments -->
+      <section class="action-statement">
+        <p>At Stepwell Housing, we believe quality accommodation provides more than just a place to live. It creates stability, dignity and opportunity. We are committed to:</p>
+      </section>
+
+      <section class="commitments-grid">
+        <div class="commitment-card">
+          <span class="commitment-number">01</span>
+          <span class="commitment-label">Safe, compliant homes</span>
         </div>
-        <div class="index-list">
-          <div class="index-item">
-            <span class="index-number">01</span>
-            <span class="index-label">Safe, compliant homes</span>
-          </div>
-          <div class="index-item">
-            <span class="index-number">02</span>
-            <span class="index-label">Responsive management</span>
-          </div>
-          <div class="index-item">
-            <span class="index-number">03</span>
-            <span class="index-label">Resident wellbeing</span>
-          </div>
-          <div class="index-item">
-            <span class="index-number">04</span>
-            <span class="index-label">Energy efficiency</span>
-          </div>
-          <div class="index-item">
-            <span class="index-number">05</span>
-            <span class="index-label">Long-term partnerships</span>
-          </div>
+        <div class="commitment-card">
+          <span class="commitment-number">02</span>
+          <span class="commitment-label">Responsive management</span>
+        </div>
+        <div class="commitment-card">
+          <span class="commitment-number">03</span>
+          <span class="commitment-label">Resident wellbeing</span>
+        </div>
+        <div class="commitment-card">
+          <span class="commitment-number">04</span>
+          <span class="commitment-label">Energy efficiency</span>
+        </div>
+        <div class="commitment-card">
+          <span class="commitment-number">05</span>
+          <span class="commitment-label">Long-term partnerships</span>
         </div>
       </section>
 
