@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepwell House — Contact Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent: #006D6B;
+    --stone: #E0F2F1;
+    --charcoal: #122B2A;
+    --white: #FFFFFF;
+    --gray-light: #C9D6D5;
+    --input-bg: #F2F4F4;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    height:100%;
+    font-family:'Inter', sans-serif;
+    color:var(--charcoal);
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 60px;
+    background:var(--white);
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+  .logo-text{
+    font-family:'Playfair Display', serif;
+    font-size:24px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    color:var(--charcoal);
+  }
+  .logo-arrow{
+    width:26px;
+    height:26px;
+    display:block;
+  }
+
+  .contact-info p{
+    font-size:14px;
+    color:var(--charcoal);
+    font-weight:500;
+  }
+
+  /* ---------- Navigation ---------- */
+  .site-nav{
+    width:100%;
+    background:var(--white);
+    border-top:1px solid #eef3f2;
+    border-bottom:1px solid #eef3f2;
+  }
+  .site-nav ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+    gap:48px;
+    padding:18px 60px;
+  }
+  .site-nav a{
+    text-decoration:none;
+    color:var(--charcoal);
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.03em;
+    padding-bottom:6px;
+    position:relative;
+    transition:opacity 0.2s ease;
+  }
+  .site-nav a:hover{
+    opacity:0.65;
+  }
+  .site-nav a.active{
+    font-weight:700;
+    border-bottom:2px solid var(--accent);
+  }
+
+  /* ---------- Page title ---------- */
+  .page-title{
+    width:100%;
+    background:var(--white);
+    padding:64px 24px 0;
+  }
+  .page-title h1{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:40px;
+    text-align:center;
+    color:var(--charcoal);
+  }
+
+  /* ---------- Contact section ---------- */
+  .contact{
+    width:100%;
+    background:var(--white);
+    padding:48px 60px 100px;
+  }
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:32px;
+    max-width:1100px;
+    margin:0 auto;
+    align-items:stretch;
+  }
+
+  .contact-card{
+    background:var(--white);
+    border-radius:24px;
+    box-shadow:0 25px 60px -20px rgba(18,43,42,0.18);
+    padding:36px 32px;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+  }
+
+  .contact-card-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    margin-bottom:28px;
+  }
+
+  .contact-icon{
+    position:relative;
+    width:56px;
+    height:56px;
+    margin-bottom:16px;
+  }
+  .contact-icon svg{
+    width:100%;
+    height:100%;
+    stroke:var(--accent);
+    fill:none;
+    stroke-width:1.75;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .contact-icon .icon-phone{
+    position:absolute;
+    top:38%;
+    left:50%;
+    width:22px;
+    height:22px;
+    transform:translate(-50%, -50%);
+    fill:var(--accent);
+    stroke:none;
+  }
+  .contact-icon .icon-globe{
+    position:absolute;
+    top:-4px;
+    right:-4px;
+    width:20px;
+    height:20px;
+    background:var(--white);
+    border:2px solid var(--accent);
+    border-radius:50%;
+  }
+  .contact-icon .icon-globe svg{
+    stroke:var(--accent);
+    stroke-width:1.5;
+  }
+
+  .contact-card h2{
+    font-family:'Inter', sans-serif;
+    font-weight:800;
+    font-size:20px;
+    color:var(--accent);
+  }
+
+  /* ---------- Contact details list ---------- */
+  .contact-list{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    margin-bottom:28px;
+  }
+  .contact-list .label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#9aa6a5;
+    margin-bottom:6px;
+  }
+  .contact-list .value{
+    font-size:16px;
+    font-weight:500;
+    line-height:1.6;
+    color:var(--charcoal);
+  }
+
+  /* ---------- Map ---------- */
+  .map-placeholder{
+    position:relative;
+    flex-grow:1;
+    min-height:260px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid #DCE4E2;
+  }
+  .map-embed{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+
+  /* ---------- Contact form ---------- */
+  .contact-form{
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+  }
+  .form-fields{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .form-fields label{
+    display:block;
+    font-size:14px;
+    font-weight:700;
+    color:var(--charcoal);
+    margin-bottom:8px;
+  }
+  .form-fields label .required{
+    color:var(--accent);
+  }
+  .form-fields input,
+  .form-fields textarea{
+    width:100%;
+    background:var(--input-bg);
+    border:1.5px solid transparent;
+    border-radius:12px;
+    padding:13px 16px;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:var(--charcoal);
+    outline:none;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .form-fields input::placeholder,
+  .form-fields textarea::placeholder{
+    color:#a7b3b2;
+  }
+  .form-fields input:focus,
+  .form-fields textarea:focus{
+    border-color:var(--accent);
+    background:var(--white);
+  }
+  .form-fields textarea{
+    resize:none;
+    min-height:130px;
+  }
+
+  .optional-section{
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid #eef3f2;
+  }
+  .optional-section .optional-title{
+    font-size:14px;
+    font-weight:600;
+    color:#7c8a89;
+    margin-bottom:20px;
+  }
+  .optional-section .form-fields{
+    margin-bottom:0;
+  }
+
+  .submit-button{
+    margin-top:32px;
+    width:100%;
+    background:var(--accent);
+    color:var(--white);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border:none;
+    border-radius:9999px;
+    padding:16px 28px;
+    cursor:pointer;
+    transition:background 0.2s ease;
+  }
+  .submit-button:hover{
+    background:#005351;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 900px){
+    .site-header{ padding:22px 28px; }
+    .site-nav ul{
+      flex-wrap:wrap;
+      gap:24px;
+      padding:16px 28px;
+    }
+    .page-title h1{ font-size:32px; }
+    .contact{ padding:40px 28px 70px; }
+    .contact-grid{
+      grid-template-columns:1fr;
+      gap:24px;
+    }
+  }
+
+  @media (max-width: 600px){
+    .site-header{
+      flex-direction:column;
+      gap:12px;
+      text-align:center;
+      padding:24px 20px;
+    }
+    .site-nav ul{
+      justify-content:flex-start;
+      gap:16px 22px;
+    }
+  }
+</style>
+</head>
+<body>
+
+      <!-- Header -->
+      <header class="site-header">
+        <a class="logo" href="home.html">
+          <span class="logo-text">STEPWELL HOUSE</span>
+          <img class="logo-arrow" src="https://placehold.co/24x24/ffffff/122b2a?text=%E2%86%97" alt="arrow icon">
+        </a>
+        <div class="contact-info">
+          <p>info@stepwellhouse.com</p>
+        </div>
+      </header>
+
+      <!-- Navigation -->
+      <nav class="site-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Landlords</a></li>
+          <li><a href="#">Maintenance and Repairs</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Page Title -->
+      <div class="page-title">
+        <h1>Contact Us</h1>
+      </div>
+
+      <!-- Contact Section -->
+      <section class="contact">
+        <div class="contact-grid">
+
+          <!-- Column 1: Contact Details & Map -->
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z"/>
+                </svg>
+                <svg class="icon-phone" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14.05 5.05a8 8 0 0 1 5.9 5.9M14.05 1a12 12 0 0 1 9.95 9.95M3 4a16.93 16.93 0 0 0 1.3 6.27 17 17 0 0 0 9.43 9.43A17 17 0 0 0 20 21l1-4-5-1-1.5 1.5a12.7 12.7 0 0 1-6-6L10 10 9 5 4 4z"/>
+                </svg>
+                <span class="icon-globe">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/>
+                  </svg>
+                </span>
+              </div>
+              <h2>Our Contact Details</h2>
+            </div>
+
+            <div class="contact-list">
+              <div>
+                <p class="label">Email</p>
+                <p class="value">Info@stepwellhousing.com</p>
+              </div>
+              <div>
+                <p class="label">Contact Number</p>
+                <p class="value">07424119632</p>
+              </div>
+              <div>
+                <p class="label">Address</p>
+                <p class="value">Airport House Business Centre, 265 Purley Way, Croydon CR0 0XZ</p>
+              </div>
+            </div>
+
+            <div class="map-placeholder">
+              <iframe
+                class="map-embed"
+                title="Stepwell House location map"
+                src="https://www.google.com/maps?q=Airport+House+Business+Centre,+265+Purley+Way,+Croydon+CR0+0XZ&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Column 2: Contact Form -->
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="6" y="3" width="12" height="18" rx="2"/>
+                  <path d="M9 3h6v2.5a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V3z"/>
+                  <path d="M8.5 12.5l2 2 5-5"/>
+                </svg>
+              </div>
+              <h2>Send Us a Message</h2>
+            </div>
+
+            <form class="contact-form">
+              <div class="form-fields">
+                <div>
+                  <label for="name">Name <span class="required">*</span></label>
+                  <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+                <div>
+                  <label for="email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div>
+                  <label for="phone">Phone Number <span class="required">*</span></label>
+                  <input type="tel" id="phone" name="phone" placeholder="07xxx xxx xxx" required>
+                </div>
+                <div>
+                  <label for="message">Message <span class="required">*</span></label>
+                  <textarea id="message" name="message" placeholder="Tell us how we can help" required></textarea>
+                </div>
+              </div>
+
+              <div class="optional-section">
+                <p class="optional-title">Optional Property Details:</p>
+                <div class="form-fields">
+                  <div>
+                    <label for="property-address">Property Address</label>
+                    <input type="text" id="property-address" name="property-address" placeholder="Property address">
+                  </div>
+                  <div>
+                    <label for="availability-date">Date of Availability</label>
+                    <input type="text" id="availability-date" name="availability-date" placeholder="DD / MM / YYYY">
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="submit-button">Submit Your Inquiry</button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+</body>
+</html>
