@@ -304,6 +304,40 @@
   .submit-button:hover{
     background:#005351;
   }
+  .submit-button:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+  }
+
+  .form-status{
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    font-weight:600;
+    margin-top:16px;
+    padding:0;
+    border-radius:12px;
+    text-align:center;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:all 0.25s ease;
+  }
+  .form-status.success,
+  .form-status.error{
+    max-height:100px;
+    opacity:1;
+    padding:14px 16px;
+  }
+  .form-status.success{
+    color:var(--accent);
+    background:#E6F2F1;
+    border:1px solid var(--accent);
+  }
+  .form-status.error{
+    color:#b3261e;
+    background:#FBEAE9;
+    border:1px solid #b3261e;
+  }
 
   /* ============ Responsive ============ */
   @media (max-width: 900px){
@@ -428,7 +462,14 @@
               <h2>Send Us a Message</h2>
             </div>
 
-            <form class="contact-form">
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <!-- Replace with the access key emailed to you by web3forms.com -->
+              <input type="hidden" name="access_key" value="9179439d-b6b8-4a95-a817-e9cea4f9bcc0">
+              <input type="hidden" name="subject" value="New enquiry from Stepwell House website">
+              <input type="hidden" name="from_name" value="Stepwell House Website">
+              <!-- Honeypot field to reduce spam (leave hidden, do not remove) -->
+              <input type="checkbox" name="botcheck" class="hidden-field" style="display:none">
+
               <div class="form-fields">
                 <div>
                   <label for="name">Name <span class="required">*</span></label>
@@ -453,14 +494,16 @@
                 <div class="form-fields">
                   <div>
                     <label for="property-address">Property Address</label>
-                    <input type="text" id="property-address" name="property-address" placeholder="Property address">
+                    <input type="text" id="property-address" name="property_address" placeholder="Property address">
                   </div>
                   <div>
                     <label for="availability-date">Date of Availability</label>
-                    <input type="text" id="availability-date" name="availability-date" placeholder="DD / MM / YYYY">
+                    <input type="text" id="availability-date" name="availability_date" placeholder="DD / MM / YYYY">
                   </div>
                 </div>
               </div>
+
+              <p class="form-status" id="form-status" aria-live="polite"></p>
 
               <button type="submit" class="submit-button">Submit Your Inquiry</button>
             </form>
@@ -468,6 +511,56 @@
 
         </div>
       </section>
+
+<script>
+  (function(){
+    var form = document.querySelector('.contact-form');
+    var status = document.getElementById('form-status');
+    if(!form) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      var submitBtn = form.querySelector('.submit-button');
+      var originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      status.textContent = '';
+      status.className = 'form-status';
+
+      var formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(response){ return response.json(); })
+      .then(function(data){
+        console.log('Web3Forms response:', data);
+        if(data.success){
+          status.textContent = 'Thanks — your message has been sent. We\'ll be in touch soon.';
+          status.classList.add('success');
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong: ' + (data.message || 'please try again or email us directly.');
+          status.classList.add('error');
+        }
+        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function(err){
+        console.error('Form submit error:', err);
+        status.textContent = 'Something went wrong. Please try again or email us directly.';
+        status.classList.add('error');
+        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
