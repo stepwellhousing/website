@@ -364,6 +364,77 @@
     .hero h1{ font-size:26px; }
     .hero p{ font-size:14px; }
   }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    width:100%;
+    background:var(--white);
+    border-top:3px solid var(--accent);
+  }
+
+  .footer-top{
+    max-width:1100px;
+    margin:0 auto;
+    padding:56px 60px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+  }
+
+  .footer-column h3{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:var(--accent);
+    margin-bottom:20px;
+  }
+
+  .footer-column ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .footer-column a{
+    text-decoration:none;
+    color:#3f4a49;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    transition:color 0.2s ease;
+  }
+  .footer-column a:hover{
+    color:var(--accent);
+  }
+
+  .footer-column .footer-text{
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:#3f4a49;
+    line-height:1.6;
+  }
+
+  .footer-bottom{
+    width:100%;
+    border-top:1px solid var(--stone);
+  }
+  .footer-bottom p{
+    text-align:center;
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    color:#9aa6a5;
+    padding:24px 0;
+  }
+
+  @media (max-width: 900px){
+    .footer-top{
+      grid-template-columns:1fr;
+      gap:32px;
+      padding:48px 28px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -457,6 +528,47 @@
 
         </div>
       </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-top">
+
+          <!-- Column 1: Menu -->
+          <div class="footer-column">
+            <h3>Menu</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Services -->
+          <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="contact.html">Guaranteed Rent</a></li>
+              <li><a href="contact.html">Fully Managed Service</a></li>
+              <li><a href="contact.html">In-House Maintenance</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Get in Touch -->
+          <div class="footer-column">
+            <h3>Get in Touch</h3>
+            <ul>
+              <li class="footer-text">07424119632</li>
+              <li class="footer-text">Info@stepwellhousing.com</li>
+              <li class="footer-text">Airport House Business Centre, 265 Purley Way, Croydon CR0 0XZ</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Stepwell Housing. All rights reserved.</p>
+        </div>
+      </footer>
 
 <script>
   (function(){
