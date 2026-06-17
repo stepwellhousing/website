@@ -601,19 +601,55 @@
   .freehold{  top:458px; right:68px; }
 
   @media(max-width:900px){
+    /* Keep diagram shape but scale it to fit screen */
+    .seeking-layout{
+      flex-direction:column;
+      align-items:center;
+    }
     .diagram{
-      width:auto;
-      height:auto;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:24px;
+      width:600px;
+      height:480px;
+      transform:scale(0.65);
+      transform-origin:top center;
+      margin-bottom:-160px; /* compensate for scale gap */
     }
-    .circle,
-    .seeking .center{
-      position:static;
-      margin:auto;
+    /* Info panel drops below diagram on mobile */
+    .seeking-info-panel{
+      position:static !important;
+      width:90% !important;
+      transform:none !important;
+      margin:16px auto 0 !important;
     }
-    .seeking .center{ grid-column:span 2; }
+    .seeking-info-panel.side-left,
+    .seeking-info-panel.side-right{
+      left:auto !important;
+      right:auto !important;
+    }
+    /* Preferred features card readable on mobile */
+    .pref-features-card{
+      flex-direction:column;
+      padding:24px 20px;
+      gap:20px;
+    }
+    .pf-main-wrap{
+      flex-direction:column;
+      gap:20px;
+    }
+    .pf-body{
+      flex-direction:column;
+      gap:16px;
+    }
+    .pf-clipboard-center{
+      display:none; /* hide clipboard illustration on mobile to save space */
+    }
+    .pf-divider{
+      width:100%;
+      height:2px;
+      margin:0;
+    }
+    .pf-list li{
+      font-size:14px;
+    }
   }
 
   /* Preferred Features Card */
@@ -778,6 +814,12 @@
   .pf-icon{ flex-shrink:0; display:flex; }
 
   @media(max-width:640px){
+    .diagram{
+      width:500px;
+      height:400px;
+      transform:scale(0.52);
+      margin-bottom:-210px;
+    }
     .pref-features-card{
       flex-direction:column;
       padding:24px 20px;
@@ -831,14 +873,7 @@
     color:#005755;
   }
 
-  @media(max-width:900px){
-    .seeking-info-panel{
-      position:static;
-      transform:none;
-      width:100%;
-      margin-bottom:16px;
-    }
-  }
+  /* end seeking panel */
 
   /* ============ 6. Why Partner With Stepwell ============ */
   .why-partner{
@@ -993,7 +1028,9 @@
     
     .section-inner{ padding:56px 28px; }
 
-    .expertise-panel,
+    .expertise-panel{
+      grid-template-columns:1fr;
+    }
     .hub-wrap{ max-width:100%; }
 
     .expertise-left{
@@ -1001,7 +1038,15 @@
       border-bottom:1px solid #EEF3F2;
       padding:40px 28px;
     }
-    .clipboard-wrap{ padding:36px 28px; }
+    .clipboard-wrap{
+      padding:36px 28px;
+      width:100%;
+      overflow:hidden;
+    }
+    .clipboard{
+      max-width:340px;
+      margin:0 auto;
+    }
 
     .why-grid,
     .steps-grid{ grid-template-columns:1fr 1fr; gap:16px; }
