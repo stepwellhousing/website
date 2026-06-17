@@ -601,19 +601,49 @@
   .freehold{  top:458px; right:68px; }
 
   @media(max-width:900px){
-    /* Keep diagram shape but scale it to fit screen */
     .seeking-layout{
       flex-direction:column;
       align-items:center;
     }
+    /* Replace absolute diagram with flex wrap grid on mobile */
     .diagram{
-      width:600px;
-      height:480px;
-      transform:scale(0.65);
-      transform-origin:top center;
-      margin-bottom:-160px; /* compensate for scale gap */
+      width:100% !important;
+      height:auto !important;
+      position:relative !important;
+      display:flex !important;
+      flex-wrap:wrap !important;
+      justify-content:center !important;
+      align-items:center !important;
+      gap:16px !important;
+      padding:20px !important;
+      transform:none !important;
+      margin-bottom:0 !important;
     }
-    /* Info panel drops below diagram on mobile */
+    .hub-connectors{ display:none; }
+    .circle,
+    .seeking .center{
+      position:static !important;
+      transform:none !important;
+      width:140px !important;
+      height:140px !important;
+      margin:0 !important;
+    }
+    .seeking .center{
+      width:160px !important;
+      height:160px !important;
+      order:-1;
+    }
+    .circle.flats img,
+    .circle.house img,
+    .circle.hmo img,
+    .circle.freehold img,
+    .circle.apartment img{
+      width:130px !important;
+      height:130px !important;
+      max-width:130px !important;
+      max-height:130px !important;
+    }
+    /* Info panel below diagram */
     .seeking-info-panel{
       position:static !important;
       width:90% !important;
@@ -625,31 +655,17 @@
       left:auto !important;
       right:auto !important;
     }
-    /* Preferred features card readable on mobile */
+    /* Preferred features card */
     .pref-features-card{
       flex-direction:column;
       padding:24px 20px;
       gap:20px;
     }
-    .pf-main-wrap{
-      flex-direction:column;
-      gap:20px;
-    }
-    .pf-body{
-      flex-direction:column;
-      gap:16px;
-    }
-    .pf-clipboard-center{
-      display:none; /* hide clipboard illustration on mobile to save space */
-    }
-    .pf-divider{
-      width:100%;
-      height:2px;
-      margin:0;
-    }
-    .pf-list li{
-      font-size:14px;
-    }
+    .pf-main-wrap{ flex-direction:column; gap:20px; }
+    .pf-body{ flex-direction:column; gap:16px; }
+    .pf-clipboard-center{ display:none; }
+    .pf-divider{ width:100%; height:2px; margin:0; }
+    .pf-list li{ font-size:14px; }
   }
 
   /* Preferred Features Card */
@@ -814,11 +830,24 @@
   .pf-icon{ flex-shrink:0; display:flex; }
 
   @media(max-width:640px){
-    .diagram{
-      width:500px;
-      height:400px;
-      transform:scale(0.52);
-      margin-bottom:-210px;
+    .circle,
+    .seeking .center{
+      width:120px !important;
+      height:120px !important;
+    }
+    .seeking .center{
+      width:140px !important;
+      height:140px !important;
+    }
+    .circle.flats img,
+    .circle.house img,
+    .circle.hmo img,
+    .circle.freehold img,
+    .circle.apartment img{
+      width:110px !important;
+      height:110px !important;
+      max-width:110px !important;
+      max-height:110px !important;
     }
     .pref-features-card{
       flex-direction:column;
