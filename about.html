@@ -30,75 +30,61 @@
     color:var(--charcoal);
   }
 
-  /* ---------- Header ---------- */
+    /* ---------- Header ---------- */
   .site-header{
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:auto 1fr auto;
     align-items:center;
-    padding:28px 60px;
-    background:var(--white);
+    padding:14px 60px;
+    background:#ffffff;
+    border-bottom:1px solid #eef3f2;
+    box-shadow:0 1px 8px rgba(18,43,42,0.06);
+    position:sticky;
+    top:0;
+    z-index:100;
   }
-
   .logo{
     display:flex;
     align-items:center;
-    gap:10px;
     text-decoration:none;
   }
-  .logo-text{
-    font-family:'Playfair Display', serif;
-    font-size:24px;
-    font-weight:600;
-    letter-spacing:0.06em;
-    color:var(--charcoal);
-  }
-  .logo-arrow{
-    width:26px;
-    height:26px;
+  .logo-img{
+    height:96px;
+    width:auto;
     display:block;
   }
-
-  .contact-info p{
-    font-size:14px;
-    color:var(--charcoal);
-    font-weight:500;
-  }
-
-  /* ---------- Navigation ---------- */
-  .site-nav{
-    width:100%;
-    background:var(--white);
-    border-top:1px solid #eef3f2;
-    border-bottom:1px solid #eef3f2;
-  }
-  .site-nav ul{
+  .site-nav-center{
     display:flex;
+    align-items:center;
     justify-content:center;
+    gap:40px;
     list-style:none;
-    gap:48px;
-    padding:18px 60px;
+    padding:0;
+    margin:0;
+    flex-wrap:nowrap;
   }
-  .site-nav a{
+  .site-nav-center a{
     text-decoration:none;
-    color:var(--charcoal);
+    color:#122B2A;
     font-size:14px;
     font-weight:500;
     letter-spacing:0.03em;
-    padding-bottom:6px;
-    position:relative;
+    white-space:nowrap;
     transition:opacity 0.2s ease;
   }
-  .site-nav a:hover{
-    opacity:0.65;
-  }
-  .site-nav a.active{
+  .site-nav-center a:hover{ opacity:0.6; }
+  .site-nav-center a.active{
     font-weight:700;
-    border-bottom:2px solid var(--accent);
+    border-bottom:2px solid #006D6B;
+    padding-bottom:2px;
   }
-
-  /* ============================================================
-     About Us — ultra-minimalist monochrome grid sections
-     ============================================================ */
+  .header-contact{
+    font-size:13px;
+    color:#122B2A;
+    font-weight:500;
+    text-align:right;
+    white-space:nowrap;
+  }
 
   /* ---------- 1. Hero ---------- */
   .about-hero{
@@ -242,7 +228,7 @@
   .commitment-number{
     flex-shrink:0;
     width:64px;
-    height:64px;
+    height:96px;
     border-radius:12px;
     background:var(--stone);
     color:var(--accent);
@@ -347,12 +333,8 @@
 
   /* ============ Responsive ============ */
   @media (max-width: 900px){
-    .site-header{ padding:22px 28px; }
-    .site-nav ul{
-      flex-wrap:wrap;
-      gap:24px;
-      padding:16px 28px;
-    }
+    .site-header{ padding:12px 28px; }
+    
 
     .about-hero{ padding:56px 28px 40px; }
     .about-ops{ padding:0 28px 40px; }
@@ -387,12 +369,7 @@
   }
 
   @media (max-width: 600px){
-    .site-header{
-      flex-direction:column;
-      gap:12px;
-      text-align:center;
-      padding:24px 20px;
-    }
+    .site-header{ padding:12px 28px; }
     .site-nav ul{
       justify-content:flex-start;
       gap:16px 22px;
@@ -403,26 +380,21 @@
 <body>
 
       <!-- Header -->
-      <header class="site-header">
-        <a class="logo" href="index.html">
-          <span class="logo-text">STEPWELL HOUSING</span>
-          <img class="logo-arrow" src="https://placehold.co/24x24/ffffff/122b2a?text=%E2%86%97" alt="arrow icon">
-        </a>
-        <div class="contact-info">
-          <p>info@stepwellhousing.com</p>
-        </div>
-      </header>
+        <header class="site-header">
+    <a class="logo" href="index.html">
+      <img src="Stepwell_Housing_Logo.png" alt="Stepwell Housing" class="logo-img">
+    </a>
+    <ul class="site-nav-center">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="landlords.html">Landlords</a></li>
+      <li><a href="#">Maintenance and Repairs</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="header-contact">info@stepwellhousing.com</div>
+  </header>
 
       <!-- Navigation -->
-      <nav class="site-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About Us</a></li>
-          <li><a href="#">Landlords</a></li>
-          <li><a href="#">Maintenance and Repairs</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
 
       <!-- 1. Hero -->
       <section class="about-hero">

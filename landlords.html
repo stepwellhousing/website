@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stepwell Housing — Landlords</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:    #006D6B;
+    --stone:     #E0F2F1;
+    --charcoal:  #122B2A;
+    --white:     #FFFFFF;
+    --slate:     #3f4a49;
+    --gray-bg:   #F9FAFB;
+    --gray-card: #F3F4F6;
+    --hairline:  #E5E7EB;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    font-family:'Inter', system-ui, sans-serif;
+    color:var(--charcoal);
+  }
+
+  /* ============ Shared site chrome ============ */
+  .site-header{ padding:12px 28px; }
+  .logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    justify-self:start;
+  }
+  .logo-img{
+    height:96px;
+    width:auto;
+    display:block;
+  }
+  .site-nav-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .site-nav-center a{
+    text-decoration:none;
+    color:var(--charcoal);
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.03em;
+    padding-bottom:4px;
+    transition:opacity 0.2s ease;
+  }
+  .site-nav-center a:hover{ opacity:0.65; }
+  .site-nav-center a.active{
+    font-weight:700;
+    border-bottom:2px solid var(--accent);
+  }
+  .header-contact{
+    justify-self:end;
+    font-size:13px;
+    color:var(--charcoal);
+    font-weight:500;
+    text-align:right;
+  }
+
+  /* ============ Shared footer ============ */
+  .site-footer{
+    width:100%;
+    background:var(--white);
+    border-top:3px solid var(--accent);
+  }
+  .footer-top{
+    max-width:1100px;
+    margin:0 auto;
+    padding:56px 60px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+  }
+  .footer-column h3{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:var(--accent);
+    margin-bottom:20px;
+  }
+  .footer-column ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .footer-column a{
+    text-decoration:none;
+    color:var(--slate);
+    font-size:14px;
+    transition:color 0.2s ease;
+  }
+  .footer-column a:hover{ color:var(--accent); }
+  .footer-column .footer-text{ font-size:14px; color:var(--slate); line-height:1.6; }
+  .footer-bottom{ width:100%; border-top:1px solid var(--stone); }
+  .footer-bottom p{ text-align:center; font-size:12px; color:#9aa6a5; padding:24px 0; }
+
+  /* ============ Shared button styles ============ */
+  .btn-primary{
+    display:inline-block;
+    padding:14px 32px;
+    border-radius:9999px;
+    background:var(--white);
+    color:var(--accent);
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    border:2px solid var(--white);
+    cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  .btn-primary:hover{ opacity:0.85; }
+
+  .btn-secondary{
+    display:inline-block;
+    padding:14px 32px;
+    border-radius:9999px;
+    background:transparent;
+    color:var(--white);
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    border:2px solid var(--white);
+    cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  .btn-secondary:hover{ opacity:0.75; }
+
+  .btn-group{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+
+  /* ============ Section helpers ============ */
+  .section-inner{
+    max-width:1100px;
+    margin:0 auto;
+    padding:80px 60px;
+  }
+  .section-label{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    margin-bottom:16px;
+  }
+  .section-heading{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(28px, 4vw, 44px);
+    color:var(--accent);
+    line-height:1.2;
+    margin-bottom:24px;
+  }
+
+  /* ============ 1. Hero ============ */
+  .hero{
+    width:100%;
+    min-height:50vh;
+    background:
+      linear-gradient(rgba(0,109,107,0.5), rgba(0,109,107,0.5)),
+      url('luffy_banner_2.png') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 40px;
+  }
+  .hero-cta{
+    border-radius:0 !important;
+    letter-spacing:0.12em;
+    font-size:13px;
+    padding:16px 38px;
+  }
+  .hero-inner{ max-width:760px; }
+  .hero h1{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(32px, 5vw, 58px);
+    font-weight:700;
+    color:var(--white);
+    line-height:1.15;
+    margin-bottom:20px;
+  }
+  .hero p{
+    font-size:clamp(16px, 2vw, 20px);
+    color:rgba(255,255,255,0.88);
+    line-height:1.7;
+    margin-bottom:40px;
+    max-width:55ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  /* ============ 2. Our Approach — Integrated Panel ============ */
+  .expertise{
+    background:var(--white);
+  }
+  .expertise-panel{
+    background:var(--white);
+    border-radius:24px;
+    box-shadow:0 16px 64px rgba(18,43,42,0.10);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    overflow:hidden;
+  }
+  .expertise-left{
+    padding:56px 48px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-right:1px solid #EEF3F2;
+  }
+  .expertise-left h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(26px, 3.5vw, 38px);
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:24px;
+    line-height:1.25;
+  }
+  .expertise-left p{
+    font-size:16px;
+    line-height:1.8;
+    color:var(--slate);
+    margin-bottom:16px;
+  }
+  .expertise-left p:last-child{ margin-bottom:0; }
+
+  /* ===== Clipboard right column ===== */
+  .clipboard-wrap{
+    padding:48px 48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#F7F9F9;
+    overflow:visible;
+  }
+  .clipboard{
+    width:100%;
+    max-width:400px;
+    position:relative;
+    overflow:visible;
+  }
+
+  /* Silver metallic backing board */
+  .clipboard-backing{
+    background:linear-gradient(160deg, #D8DEDE 0%, #B8C4C4 40%, #CDD7D7 70%, #A8B8B8 100%);
+    border-radius:10px;
+    box-shadow:
+      0 2px 0 #9AABAB,
+      0 4px 0 #8A9E9E,
+      0 10px 32px rgba(18,43,42,0.18);
+    padding:18px 16px 20px;
+    position:relative;
+    overflow:visible;
+  }
+  /* Subtle metallic sheen line on backing */
+  .clipboard-backing::before{
+    content:"";
+    position:absolute;
+    top:0; left:8%; width:30%;
+    height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    border-radius:10px;
+    pointer-events:none;
+  }
+
+  /* Metal clip */
+  .clipboard-clip{
+    position:absolute;
+    top:-26px;
+    left:50%;
+    transform:translateX(-50%);
+    width:72px;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  /* clip bar top */
+  .clip-bar-top{
+    width:72px;
+    height:12px;
+    background:linear-gradient(180deg, #E8EEEE 0%, #9FB0B0 50%, #C4D0D0 100%);
+    border-radius:4px 4px 0 0;
+    box-shadow:0 -2px 4px rgba(0,0,0,0.12);
+  }
+  /* clip arch / spring loop */
+  .clip-arch{
+    width:40px;
+    height:18px;
+    border:5px solid #A8B8B8;
+    border-bottom:none;
+    border-radius:20px 20px 0 0;
+    background:linear-gradient(180deg, #D8E4E4 0%, #B0C0C0 100%);
+    box-shadow:inset 0 1px 2px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.15);
+    margin-bottom:0;
+  }
+  /* clip bar bottom (presses on paper) */
+  .clip-bar-bottom{
+    width:72px;
+    height:10px;
+    background:linear-gradient(180deg, #B0C0C0 0%, #D8E4E4 100%);
+    border-radius:0 0 3px 3px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.10);
+  }
+
+  /* Paper inside backing */
+  .clipboard-paper{
+    background:#FFFFFF;
+    border-radius:3px 3px 6px 6px;
+    border:1px solid #E0E8E8;
+    padding:52px 28px 64px 28px;
+    position:relative;
+    overflow:visible;
+    /* Faint horizontal lines */
+    background-image:repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 30px,
+      #EAEFF0 30px,
+      #EAEFF0 31px
+    );
+    background-position:0 64px;
+  }
+
+  .clipboard-title{
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.22em;
+    color:var(--accent);
+    margin-bottom:22px;
+    text-align:center;
+    position:relative;
+    background:linear-gradient(transparent 60%, rgba(230,244,241,0.6) 100%);
+    padding-bottom:4px;
+  }
+
+  .clipboard-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    position:relative;
+    z-index:1;
+  }
+  .clipboard-list li{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    line-height:1.45;
+  }
+  .cb-check{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    margin-left:-22px;
+    position:relative;
+    z-index:10;
+  }
+  .cb-check svg{
+    width:22px;
+    height:22px;
+    display:block;
+  }
+  .cb-text{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--charcoal);
+    line-height:1.4;
+  }
+
+  /* Pencil — sits outside the clipboard paper, bottom-right of the whole clipboard component */
+  .clipboard-pencil{
+    position:absolute;
+    bottom:-30px;
+    right:-24px;
+    z-index:10;
+  }
+
+  /* ============ 3. Why Landlords Choose Us ============ */
+  .why-choose{
+    background:var(--gray-bg);
+  }
+  .why-choose h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(26px, 3.5vw, 38px);
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:48px;
+    text-align:center;
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .why-card{
+    background:var(--white);
+    border-radius:16px;
+    padding:32px 28px;
+    box-shadow:0 8px 32px rgba(18,43,42,0.08);
+  }
+  .why-card h3{
+    font-size:17px;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:12px;
+  }
+  .why-card p{
+    font-size:14px;
+    line-height:1.75;
+    color:#6b7280;
+  }
+
+  /* ============ 4. How It Works ============ */
+  .how-it-works{
+    background:var(--white);
+  }
+  .how-it-works h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(26px, 3.5vw, 38px);
+    font-weight:700;
+    color:var(--accent);
+    text-align:center;
+    margin-bottom:48px;
+  }
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .step-card{
+    background:var(--white);
+    border-radius:16px;
+    padding:32px 24px;
+    box-shadow:0 8px 32px rgba(18,43,42,0.08);
+    position:relative;
+    border-top:4px solid var(--accent);
+  }
+  .step-number{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:var(--stone);
+    color:var(--accent);
+    font-size:22px;
+    font-weight:800;
+    margin-bottom:16px;
+  }
+  .step-card h3{
+    font-size:16px;
+    font-weight:800;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:10px;
+    line-height:1.3;
+  }
+  .step-card p{
+    font-size:14px;
+    line-height:1.75;
+    color:#6b7280;
+  }
+
+  /* ============ 5. Actively Seeking — Icon Hub ============ */
+  .seeking{
+    background:#f6f6f6;
+    padding:60px 20px;
+    text-align:center;
+  }
+  .seeking h1{
+    color:#0a6d66;
+    font-family:'Inter', sans-serif;
+    font-size:clamp(1.4rem, 3vw, 2.4rem);
+    font-weight:800;
+    letter-spacing:0.1em;
+    margin-bottom:80px;
+  }
+  .diagram{
+    position:relative;
+    width:900px;
+    height:720px;
+    margin:auto;
+  }
+  .hub-connectors{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+  }
+  .circle,
+  .seeking .center{
+    z-index:1;
+  }
+  .circle,
+  .seeking .center{
+    position:absolute;
+    width:220px;
+    height:220px;
+    background:white;
+    border:2px solid #8ea4a0;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:transform .28s ease, box-shadow .28s ease;
+  }
+  .circle{
+    cursor:pointer;
+  }
+  .circle:hover{
+    transform:translateY(-10px) scale(1.08);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+    z-index:10;
+  }
+  .circle img{
+    max-width:70%;
+    max-height:110px;
+    object-fit:contain;
+  }
+  /* Apartments icon fills 80% of the circle */
+  .circle.flats,
+  .circle.house,
+  .circle.hmo,
+  .circle.freehold{
+    overflow:hidden;
+  }
+  .circle.flats img,
+  .circle.house img,
+  .circle.hmo img,
+  .circle.freehold img{
+    width:220px;
+    height:220px;
+    max-width:220px;
+    max-height:220px;
+    object-fit:contain;
+    border-radius:0;
+  }
+  .seeking .center img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+  }
+  .circle span{
+    margin-top:12px;
+    color:#0a6d66;
+    font-family:'Inter', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    line-height:1.1;
+  }
+  .seeking .center{
+    width:320px;
+    height:320px;
+    left:290px;
+    top:260px;
+    cursor:pointer;
+  }
+  .seeking .center:hover{
+    transform:translateY(-10px) scale(1.08);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+    z-index:10;
+  }
+  .house{     top:0;    left:340px; }
+  .flats{     top:178px; left:68px; }
+  .hmo{       top:178px; right:68px; }
+  .apartment{ top:458px; left:88px; }
+  .freehold{  top:458px; right:68px; }
+
+  @media(max-width:900px){
+    .diagram{
+      width:auto;
+      height:auto;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+    }
+    .circle,
+    .seeking .center{
+      position:static;
+      margin:auto;
+    }
+    .seeking .center{ grid-column:span 2; }
+  }
+
+  /* Preferred Features Card */
+  .pref-features-card{
+    display:flex;
+    align-items:center;
+    gap:0;
+    max-width:760px;
+    margin:48px auto 0;
+    background:#e8e8e8;
+    border-radius:16px;
+    overflow:hidden;
+    padding:28px 32px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    border:1px solid #d0d0d0;
+  }
+  .pf-main-wrap{
+    display:flex;
+    align-items:stretch;
+    gap:24px;
+    width:100%;
+  }
+  .pf-left-wrap{
+    flex-shrink:0;
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+  }
+
+  /* ---- clipboard illustration ---- */
+  .pf-clipboard{
+    position:relative;
+    width:96px;
+    display:flex;
+    flex-direction:column;
+  }
+  .pf-clip{
+    position:absolute;
+    top:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:28px;
+    height:20px;
+    background:linear-gradient(180deg,#C8C8C8 0%,#A0A8A0 100%);
+    border-radius:4px 4px 2px 2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+    box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  }
+  .pf-clip-ring{
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    border:3px solid #888;
+    background:#bbb;
+  }
+  .pf-paper{
+    width:90px;
+    flex:1;
+    margin-top:10px;
+    background:white;
+    border-radius:4px;
+    border:2px solid #B0B8B0;
+    padding:20px 10px 10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    box-shadow:2px 2px 8px rgba(0,0,0,0.1);
+    position:relative;
+  }
+  .pf-check-row{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .pf-line{
+    height:3px;
+    flex:1;
+    background:#C8CCC8;
+    border-radius:2px;
+  }
+  .pf-line.short{
+    width:50%;
+    flex:none;
+  }
+  .pf-shield{
+    position:absolute;
+    bottom:-16px;
+    right:-16px;
+    filter:drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+  }
+
+  /* Divider */
+  .pf-list-wrap{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  /* Right: List */
+  .pf-right{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .pf-heading{
+    font-family:'Inter', sans-serif;
+    font-size:21px;
+    font-weight:800;
+    color:#1a4a40;
+    letter-spacing:0.04em;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .pf-body{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    flex:1;
+  }
+  .pf-clipboard-center{
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 24px 0 0;
+  }
+  .pf-divider{
+    width:2px;
+    background:#B0B8B0;
+    margin:0 24px 0 0;
+    flex-shrink:0;
+    align-self:stretch;
+  }
+  .pf-heading{
+    font-family:'Inter', sans-serif;
+    font-size:21px;
+    font-weight:800;
+    color:#1a4a40;
+    letter-spacing:0.04em;
+    margin-bottom:16px;
+  }
+  .pf-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .pf-list li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    font-weight:500;
+    color:#1a4a40;
+  }
+  .pf-icon{ flex-shrink:0; display:flex; }
+
+  @media(max-width:640px){
+    .pref-features-card{
+      flex-direction:column;
+      padding:24px 20px;
+      gap:24px;
+    }
+    .pf-divider{ width:100%; height:2px; margin:0; }
+    .pf-left{ margin-right:0; }
+  }
+
+  /* Circle info panel — positioned inside diagram */
+  .seeking-layout{
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .seeking-info-panel{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:300px;
+    z-index:20;
+    display:none;
+  }
+  .seeking-info-panel.active{
+    display:block;
+  }
+  .seeking-info-panel.side-left{
+    right:calc(100% + 16px);
+    left:auto;
+  }
+  .seeking-info-panel.side-right{
+    left:calc(100% + 16px);
+    right:auto;
+  }
+  .seeking-info-content{
+    padding:20px 24px;
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    color:#122B2A;
+    background:white;
+    border-radius:14px;
+    border:1px solid #dde8e6;
+    box-shadow:0 6px 24px rgba(18,43,42,0.10);
+  }
+  .seeking-info-content a{
+    color:#0a6d66;
+    font-weight:700;
+    text-decoration:underline;
+  }
+  .seeking-info-content a:hover{
+    color:#005755;
+  }
+
+  @media(max-width:900px){
+    .seeking-info-panel{
+      position:static;
+      transform:none;
+      width:100%;
+      margin-bottom:16px;
+    }
+  }
+
+  /* ============ 6. Why Partner With Stepwell ============ */
+  .why-partner{
+    background:var(--gray-bg);
+  }
+  .why-partner-inner{
+    max-width:75%;
+    margin:0 auto;
+    padding:60px 60px;
+    text-align:center;
+  }
+  .why-partner h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(28px, 4vw, 44px);
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:24px;
+  }
+  .why-partner p{
+    font-size:17px;
+    line-height:1.85;
+    color:var(--slate);
+    margin-bottom:16px;
+  }
+
+  /* ============ 7. FAQ ============ */
+  .faq{
+    background:var(--white);
+  }
+  .faq-inner{
+    max-width:800px;
+    margin:0 auto;
+    padding:80px 60px;
+  }
+  .faq h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(26px, 3.5vw, 38px);
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:48px;
+    text-align:center;
+  }
+  .faq-item{
+    border-bottom:1px solid var(--hairline);
+  }
+  .faq-item:first-of-type{ border-top:1px solid var(--hairline); }
+
+  .faq-trigger{
+    width:100%;
+    background:none;
+    border:none;
+    padding:24px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    cursor:pointer;
+    text-align:left;
+  }
+  .faq-trigger h3{
+    font-size:16px;
+    font-weight:700;
+    color:var(--accent);
+    line-height:1.4;
+    margin:0;
+    flex:1;
+  }
+  .faq-icon{
+    flex-shrink:0;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    border:2px solid var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--accent);
+    font-size:18px;
+    font-weight:300;
+    line-height:1;
+    transition:transform 0.25s ease, background 0.2s ease;
+  }
+  .faq-item.open .faq-icon{
+    transform:rotate(45deg);
+    background:var(--accent);
+    color:var(--white);
+  }
+  .faq-body{
+    display:none;
+    padding:0 0 24px;
+  }
+  .faq-item.open .faq-body{
+    display:block;
+  }
+  .faq-body p{
+    font-size:15px;
+    line-height:1.75;
+    color:#6b7280;
+  }
+
+  /* ============ 8. CTA Footer ============ */
+  .cta-footer{
+    width:100%;
+    background:var(--accent);
+    text-align:center;
+    padding:80px 40px;
+  }
+  .cta-footer h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(26px, 4vw, 42px);
+    font-weight:700;
+    color:var(--white);
+    margin-bottom:16px;
+    line-height:1.25;
+  }
+  .cta-footer p{
+    font-size:17px;
+    color:rgba(255,255,255,0.85);
+    margin-bottom:40px;
+    max-width:52ch;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.7;
+  }
+
+  .learn-more-strip{
+    text-align:center;
+    padding:32px 24px;
+    background:var(--white);
+  }
+  .learn-more-strip a{
+    display:inline-block;
+    background:var(--accent);
+    color:#ffffff;
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    padding:16px 38px;
+    border-radius:0;
+    text-decoration:none;
+    text-transform:uppercase;
+    transition:background 0.2s ease;
+  }
+  .learn-more-strip a:hover{
+    background:#005351;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 900px){
+    .site-header{ padding:12px 28px; }
+    
+    .section-inner{ padding:56px 28px; }
+
+    .expertise-panel,
+    .hub-wrap{ max-width:100%; }
+
+    .expertise-left{
+      border-right:none;
+      border-bottom:1px solid #EEF3F2;
+      padding:40px 28px;
+    }
+    .clipboard-wrap{ padding:36px 28px; }
+
+    .why-grid,
+    .steps-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+
+    .footer-top{ grid-template-columns:1fr; gap:32px; padding:48px 28px; }
+
+    .why-partner-inner{
+      max-width:90%;
+      padding:56px 28px;
+    }
+    .faq-inner{ padding:56px 28px; }
+  }
+
+  @media (max-width: 600px){
+    .site-header{ padding:12px 28px; }
+    .site-nav ul{ justify-content:flex-start; gap:14px 20px; }
+    .why-grid,
+    .steps-grid{ grid-template-columns:1fr; }
+    .btn-group{ flex-direction:column; align-items:center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+    <header class="site-header">
+    <a class="logo" href="index.html">
+      <img src="Stepwell_Housing_Logo.png" alt="Stepwell Housing" class="logo-img">
+    </a>
+    <ul class="site-nav-center">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="landlords.html" class="active">Landlords</a></li>
+      <li><a href="#">Maintenance and Repairs</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="header-contact">info@stepwellhousing.com</div>
+  </header>
+
+  <!-- ===== Nav ===== -->
+
+  <!-- ===== 1. Hero ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Guaranteed Rent. Professional Management. Zero Hassle.</h1>
+      <p>We take the stress out of property ownership — delivering reliable income, full compliance and hands-on management so you can focus on what matters.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn-primary hero-cta">Get a Free Valuation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. Backed by Expertise ===== -->
+  <section class="expertise">
+    <div class="section-inner">
+      <div class="expertise-panel">
+
+        <!-- Left: text -->
+        <div class="expertise-left">
+          <p class="section-label">Our Approach</p>
+          <h2>Backed by Expertise.<br>Built Around You.</h2>
+          <p>Stepwell Housing works directly with landlords to provide a fully managed, compliant accommodation service — taking the pressure off your plate while protecting the value of your property.</p>
+          <p>We operate across South London and the surrounding areas, partnering with local authorities to house individuals and families in quality, safe accommodation.</p>
+        </div>
+
+        <!-- Right: Clipboard -->
+        <div class="clipboard-wrap">
+          <div class="clipboard">
+
+            <!-- Metal clip -->
+            <div class="clipboard-clip">
+              <div class="clip-arch"></div>
+              <div class="clip-bar-top"></div>
+              <div class="clip-bar-bottom"></div>
+            </div>
+
+            <!-- Silver metallic backing board -->
+            <div class="clipboard-backing">
+
+              <!-- Paper surface -->
+              <div class="clipboard-paper">
+                <p class="clipboard-title">What This Means for You</p>
+                <ul class="clipboard-list">
+
+                  <li>
+                    <span class="cb-check">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="2,13 9,20 22,4" stroke="#005755" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                      </svg>
+                    </span>
+                    <span class="cb-text">Guaranteed monthly rent — paid on time, every time</span>
+                  </li>
+
+                  <li>
+                    <span class="cb-check">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="2,13 9,20 22,4" stroke="#005755" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                      </svg>
+                    </span>
+                    <span class="cb-text">No void periods — your property is always earning</span>
+                  </li>
+
+                  <li>
+                    <span class="cb-check">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="2,13 9,20 22,4" stroke="#005755" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                      </svg>
+                    </span>
+                    <span class="cb-text">Full property management from day one</span>
+                  </li>
+
+                  <li>
+                    <span class="cb-check">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="2,13 9,20 22,4" stroke="#005755" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                      </svg>
+                    </span>
+                    <span class="cb-text">Compliance and safety checks handled for you</span>
+                  </li>
+
+                  <li>
+                    <span class="cb-check">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="2,13 9,20 22,4" stroke="#005755" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                      </svg>
+                    </span>
+                    <span class="cb-text">Maintenance and repairs managed in-house</span>
+                  </li>
+
+                  <li>
+                    <span class="cb-check">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="2,13 9,20 22,4" stroke="#005755" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                      </svg>
+                    </span>
+                    <span class="cb-text">Direct point of contact — no call centres</span>
+                  </li>
+
+                </ul>
+
+              </div><!-- end clipboard-paper -->
+
+              <!-- Pencil SVG — outside paper, bottom-right corner of backing -->
+              <div class="clipboard-pencil">
+                <svg width="56" height="130" viewBox="0 0 56 130" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(-20deg);">
+                  <!-- Eraser (pink) -->
+                  <rect x="14" y="0" width="28" height="16" rx="3" fill="#F4A7B9"/>
+                  <rect x="14" y="14" width="28" height="4" rx="1" fill="#C0785A"/>
+                  <!-- Pencil barrel (yellow) -->
+                  <rect x="14" y="18" width="28" height="80" fill="#F5C842"/>
+                  <!-- Wood grain lines -->
+                  <line x1="20" y1="18" x2="20" y2="98" stroke="#E0B030" stroke-width="1"/>
+                  <line x1="36" y1="18" x2="36" y2="98" stroke="#E0B030" stroke-width="1"/>
+                  <!-- Ferrule (silver band) -->
+                  <rect x="14" y="96" width="28" height="8" rx="1" fill="#C8D4D4"/>
+                  <rect x="14" y="98" width="28" height="2" fill="#A8B8B8"/>
+                  <!-- Tapered wood tip -->
+                  <path d="M14,104 L28,122 L42,104 Z" fill="#D4A96A"/>
+                  <line x1="22" y1="104" x2="26" y2="120" stroke="#B8945A" stroke-width="0.8"/>
+                  <line x1="34" y1="104" x2="30" y2="120" stroke="#B8945A" stroke-width="0.8"/>
+                  <!-- Graphite tip -->
+                  <path d="M23,118 L28,130 L33,118 Z" fill="#4A4A4A"/>
+                </svg>
+              </div>
+
+            </div><!-- end clipboard-backing -->
+          </div><!-- end clipboard -->
+        </div><!-- end clipboard-wrap -->
+
+      </div><!-- end expertise-panel -->
+    </div>
+  </section>
+
+  <!-- ===== 3. Why Landlords Choose Us ===== -->
+  <section class="why-choose">
+    <div class="section-inner">
+      <h2>Why Landlords Choose Us</h2>
+      <div class="why-grid">
+
+        <div class="why-card">
+          <h3>Guaranteed Rent</h3>
+          <p>Receive your rent on a fixed date every month — regardless of occupancy or tenant circumstances. No chasing, no delays.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>No Void Periods</h3>
+          <p>We take on your property under a management agreement, meaning you earn income even between tenancies — no empty months.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>Full Management</h3>
+          <p>From tenant placement to day-to-day management, we handle it all. You own the asset; we run it.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>Compliance Covered</h3>
+          <p>We ensure your property meets all legal standards — gas, electrical, HMO licensing, fire safety and more — so you're always protected.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>In-House Maintenance</h3>
+          <p>Our dedicated maintenance team responds quickly to any issues — keeping your property in top condition and residents happy.</p>
+        </div>
+
+        <div class="why-card">
+          <h3>Transparent Reporting</h3>
+          <p>Regular updates and clear reporting so you always know the status of your property without having to ask.</p>
+        </div>
+
+      </div>
+      <div class="learn-more-strip" style="background:transparent; padding-top:40px;">
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. How It Works ===== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-inner">
+      <h2>How It Works</h2>
+      <div style="text-align:center;">
+        <img src="image_dcac69.jpg" alt="Stepwell Housing — How It Works process overview" style="max-width:100%; border-radius:12px; box-shadow:0 12px 40px rgba(18,43,42,0.12);">
+      </div>
+    </div>
+  </section>
+
+  <div class="learn-more-strip"><a href="contact.html">SPEAK TO OUR TEAM</a></div>
+
+  <!-- ===== 5. We Are Actively Seeking ===== -->
+  <section class="seeking">
+    <h1>WE ARE ACTIVELY SEEKING:</h1>
+
+    <div class="seeking-layout">
+
+      <!-- Diagram with info panel inside -->
+      <div class="diagram">
+        <!-- Info panel — absolutely positioned inside diagram -->
+        <div class="seeking-info-panel" id="seekingInfoPanel">
+          <div class="seeking-info-content" id="seekingInfoContent"></div>
+        </div>
+
+        <!-- SVG connector lines sit behind all circles -->
+        <svg class="hub-connectors" viewBox="0 0 900 720" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="450" y1="420" x2="450" y2="110" stroke="#B0BFBD" stroke-width="1.5"/>
+          <line x1="450" y1="420" x2="170" y2="280" stroke="#B0BFBD" stroke-width="1.5"/>
+          <line x1="450" y1="420" x2="730" y2="280" stroke="#B0BFBD" stroke-width="1.5"/>
+          <line x1="450" y1="420" x2="190" y2="560" stroke="#B0BFBD" stroke-width="1.5"/>
+          <line x1="450" y1="420" x2="730" y2="560" stroke="#B0BFBD" stroke-width="1.5"/>
+          <circle cx="450" cy="110" r="5" fill="#B0BFBD" stroke="white" stroke-width="1.5"/>
+          <circle cx="170" cy="280" r="5" fill="#B0BFBD" stroke="white" stroke-width="1.5"/>
+          <circle cx="730" cy="280" r="5" fill="#B0BFBD" stroke="white" stroke-width="1.5"/>
+          <circle cx="190" cy="560" r="5" fill="#B0BFBD" stroke="white" stroke-width="1.5"/>
+          <circle cx="730" cy="560" r="5" fill="#B0BFBD" stroke="white" stroke-width="1.5"/>
+          <circle cx="450" cy="420" r="5" fill="#B0BFBD" stroke="white" stroke-width="1.5"/>
+        </svg>
+
+        <div class="circle house info-trigger"
+             data-side="left"
+             data-info="&lt;p&gt;Here at Stepwell Housing, we are looking for all types of freehold houses—from detached and semi-detached homes all the way through to bungalows and townhouses. We offer landlords a completely hands-off experience with reliable, guaranteed rent every single month. If you think you have a property we might be interested in, &lt;a href='contact.html'&gt;click here&lt;/a&gt; to learn more.&lt;/p&gt;">
+          <img src="icon_house_new.png" alt="Houses">
+        </div>
+        <div class="circle flats info-trigger"
+             data-side="left"
+             data-info="&lt;p&gt;At Stepwell Housing, we are constantly seeking high-quality flats and apartments to add to our guaranteed rent portfolio. Whether you own a modern studio, a purpose-built block, or a spacious multi-bedroom apartment, we provide a hassle-free, reliable income solution. If you want to secure guaranteed rent for your property, &lt;a href='contact.html'&gt;click here&lt;/a&gt; to learn more.&lt;/p&gt;">
+          <img src="icon_apartment_new.png" alt="Flats">
+        </div>
+        <div class="circle hmo info-trigger"
+             data-side="right"
+             data-info="&lt;p&gt;Here at Stepwell Housing, we specialise in taking the hassle out of managing Houses in Multiple Occupation (HMOs). Whether you own a smaller shared house or a large multi-room property, we navigate the complexities of multiple tenants while providing you with a guaranteed, fixed monthly income. If you want to eliminate void periods and secure your rental income, &lt;a href='contact.html'&gt;click here&lt;/a&gt; to learn more.&lt;/p&gt;">
+          <img src="icon_hmo_new.png" alt="HMOs">
+        </div>
+        <div class="circle apartment">
+          <img src="icon_apartment.png" alt="Apartment Blocks">
+          <span>APARTMENT<br>BLOCKS</span>
+        </div>
+        <div class="circle freehold info-trigger"
+             data-side="right"
+             data-info="&lt;p&gt;Here at Stepwell Housing, we partner with property owners and developers looking to lease entire freehold blocks. Whether your building consists of a few apartments or dozens of units, we offer a streamlined solution that guarantees your rental income across the entire block without the stress of multi-tenant management. If you are looking for a completely hands-off approach for your building, &lt;a href='contact.html'&gt;click here&lt;/a&gt; to learn more.&lt;/p&gt;">
+          <img src="icon_freehold_new.png" alt="Freehold Blocks">
+        </div>
+        <div class="center">
+          <img src="Stepwell_Housing_Logo.png" alt="Stepwell Housing">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Preferred Features Card -->
+    <div class="pref-features-card">
+
+      <div class="pf-main-wrap">
+
+        <!-- Right column: heading + body row (divider | clipboard | list) -->
+        <div class="pf-right">
+          <h3 class="pf-heading">PREFERRED FEATURES</h3>
+          <div class="pf-body">
+
+            <!-- Clipboard left of divider -->
+            <div class="pf-clipboard-center">
+              <div class="pf-clipboard">
+                <div class="pf-clip">
+                  <div class="pf-clip-ring"></div>
+                </div>
+                <div class="pf-paper">
+                  <div class="pf-check-row"><svg width="18" height="18" viewBox="0 0 18 18"><polyline points="2,9 7,14 16,4" stroke="#1a7a6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><div class="pf-line"></div></div>
+                  <div class="pf-check-row"><svg width="18" height="18" viewBox="0 0 18 18"><polyline points="2,9 7,14 16,4" stroke="#1a7a6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><div class="pf-line"></div></div>
+                  <div class="pf-check-row"><svg width="18" height="18" viewBox="0 0 18 18"><polyline points="2,9 7,14 16,4" stroke="#1a7a6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><div class="pf-line"></div></div>
+                  <div class="pf-check-row"><svg width="18" height="18" viewBox="0 0 18 18"><polyline points="2,9 7,14 16,4" stroke="#1a7a6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><div class="pf-line short"></div></div>
+                </div>
+                <div class="pf-shield">
+                  <svg width="44" height="52" viewBox="0 0 44 52" fill="none">
+                    <path d="M22 2 L40 10 L40 28 C40 40 22 50 22 50 C22 50 4 40 4 28 L4 10 Z" fill="#1a7a6e"/>
+                    <polyline points="11,26 18,34 33,18" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divider between clipboard and list -->
+            <div class="pf-divider"></div>
+
+            <!-- Tick list -->
+            <div class="pf-list-wrap">
+              <ul class="pf-list">
+                <li>
+                  <span class="pf-icon"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#1a7a6e"/><polyline points="5,11 9,15 17,7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                  Good transport links
+                </li>
+                <li>
+                  <span class="pf-icon"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#1a7a6e"/><polyline points="5,11 9,15 17,7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                  Well-maintained condition
+                </li>
+                <li>
+                  <span class="pf-icon"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#1a7a6e"/><polyline points="5,11 9,15 17,7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                  EPC C or above where possible
+                </li>
+                <li>
+                  <span class="pf-icon"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#1a7a6e"/><polyline points="5,11 9,15 17,7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                  Suitable for family or shared accommodation
+                </li>
+              </ul>
+            </div><!-- end pf-list-wrap -->
+
+          </div><!-- end pf-body -->
+        </div><!-- end pf-right -->
+
+      </div><!-- end pf-main-wrap -->
+
+    </div><!-- end pref-features-card -->
+
+    <div class="learn-more-strip" style="background:transparent; padding-top:40px; padding-bottom:0;">
+      <a href="contact.html">GET A FREE VALUATION</a>
+    </div>
+
+  </section>
+
+  <!-- ===== 6. Why Partner With Stepwell ===== -->
+  <section class="why-partner">
+    <div class="why-partner-inner">
+      <h2>Why Partner With Stepwell Housing?</h2>
+      <p>We believe that good housing management is built on trust, consistency and care — not just contracts. When you partner with us, you're not just handing over the keys; you're gaining a long-term management partner who treats your property as if it were their own.</p>
+      <p>Our team works directly with local authorities and housing bodies to ensure a steady pipeline of residents, rigorous compliance and professional oversight at every stage. We pride ourselves on clear communication, fast responses and zero surprises.</p>
+      <div class="learn-more-strip" style="background:transparent; padding-top:32px; padding-bottom:0;">
+        <a href="contact.html">PARTNER WITH US</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. FAQ ===== -->
+  <section class="faq">
+    <div class="faq-inner">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h3>How does the guaranteed rent scheme work?</h3>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">
+          <p>We enter into a management agreement with you and pay a fixed monthly rent directly — regardless of occupancy. You receive a consistent income with no gaps, even if the property is between tenancies.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h3>What areas do you operate in?</h3>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">
+          <p>We currently operate across South London and the surrounding boroughs. If you're unsure whether your property falls within our area, get in touch and we'll let you know quickly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h3>Who are the tenants?</h3>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">
+          <p>We work with local authorities and housing bodies to house individuals and families who have been referred for supported or temporary accommodation. All placements are managed carefully and responsibly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h3>Will my property be well maintained?</h3>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Yes. We have an in-house maintenance team that handles all repairs and upkeep promptly. We also carry out regular property inspections and provide landlords with condition reports.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h3>What happens at the end of the agreement?</h3>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">
+          <p>At the end of the management agreement, properties are returned in good condition. We aim to build long-term partnerships, so we'll discuss renewal options well in advance.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h3>Do I need to do anything to get started?</h3>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Just get in touch. We'll arrange a free property valuation, explain how our scheme works, and handle all the paperwork from there. It's designed to be as straightforward as possible for landlords.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 8. CTA Footer ===== -->
+  <section class="cta-footer">
+    <h2>Ready to Let Your Property Stress-Free?</h2>
+    <p>Join the landlords already benefiting from guaranteed rent, full management and zero hassle. Get in touch today for a free property valuation.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn-secondary hero-cta">Speak to Our Team</a>
+    </div>
+  </section>
+
+  <!-- ===== Site Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="landlords.html">Guaranteed Rent</a></li>
+          <li><a href="landlords.html">Fully Managed Service</a></li>
+          <li><a href="landlords.html">In-House Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Get in Touch</h3>
+        <ul>
+          <li class="footer-text">07424119632</li>
+          <li class="footer-text">Info@stepwellhousing.com</li>
+          <li class="footer-text">Airport House Business Centre, 265 Purley Way, Croydon CR0 0XZ</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Stepwell Housing. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(function(trigger){
+    trigger.addEventListener('click', function(){
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+
+      // Close all open items
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+      });
+
+      // If it wasn't open, open it
+      if(!isOpen){
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<script>
+  (function(){
+    var panel = document.getElementById('seekingInfoPanel');
+    var content = document.getElementById('seekingInfoContent');
+    if(!panel || !content) return;
+
+    var fixed = false;
+
+    function showPanel(circle){
+      var side = circle.getAttribute('data-side') || 'left';
+      content.innerHTML = circle.getAttribute('data-info');
+      panel.className = 'seeking-info-panel active side-' + side;
+    }
+
+    function hidePanel(){
+      panel.classList.remove('active', 'side-left', 'side-right');
+      content.innerHTML = '';
+    }
+
+    document.querySelectorAll('.info-trigger').forEach(function(circle){
+
+      circle.addEventListener('mouseenter', function(){
+        if(fixed) return;
+        showPanel(this);
+      });
+
+      circle.addEventListener('mouseleave', function(){
+        if(fixed) return;
+        hidePanel();
+      });
+
+      circle.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(fixed){
+          fixed = false;
+          hidePanel();
+        } else {
+          fixed = true;
+          showPanel(this);
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e){
+      if(!fixed) return;
+      if(!panel.contains(e.target)){
+        fixed = false;
+        hidePanel();
+      }
+    });
+
+  })();
+</script>
+
+</body>
+</html>
