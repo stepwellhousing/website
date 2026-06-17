@@ -6,539 +6,537 @@
 <title>Stepwell Housing — About Us</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --accent: #006D6B;
-    --stone: #E0F2F1;
-    --charcoal: #122B2A;
-    --white: #FFFFFF;
-    --gray-light: #C9D6D5;
-
-    /* About page tokens, aligned to site palette */
-    --ink: var(--charcoal);
-    --gray-mid: #3f4a49;
-    --gray-bg: var(--stone);
-    --hairline: var(--stone);
+    --accent:#006D6B;
+    --dark:#0a3d38;
+    --charcoal:#122B2A;
+    --slate:#3f5a58;
+    --light:#f7fafa;
+    --stone:#E0F2F1;
+    --hairline:#d4e8e6;
+    --white:#ffffff;
   }
-
   *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ font-family:'Inter',sans-serif; color:var(--charcoal); background:var(--white); }
 
-  html,body{
-    height:100%;
-    font-family:'Inter', sans-serif;
-    color:var(--charcoal);
-  }
-
-    /* ---------- Header ---------- */
+  /* ====== Header ====== */
   .site-header{
-    display:grid;
-    grid-template-columns:auto 1fr auto;
-    align-items:center;
-    padding:14px 60px;
-    background:#ffffff;
-    border-bottom:1px solid #eef3f2;
+    display:grid; grid-template-columns:auto 1fr auto;
+    align-items:center; padding:14px 60px;
+    background:#fff; border-bottom:1px solid #eef3f2;
     box-shadow:0 1px 8px rgba(18,43,42,0.06);
-    position:sticky;
-    top:0;
-    z-index:100;
+    position:sticky; top:0; z-index:100;
   }
-  .logo{
-    display:flex;
-    align-items:center;
-    text-decoration:none;
-  }
-  .logo-img{
-    height:96px;
-    width:auto;
-    display:block;
-  }
+  .logo{ display:flex; align-items:center; text-decoration:none; }
+  .logo-img{ height:96px; width:auto; display:block; }
   .site-nav-center{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:40px;
-    list-style:none;
-    padding:0;
-    margin:0;
-    flex-wrap:nowrap;
+    display:flex; align-items:center; justify-content:center;
+    gap:40px; list-style:none; padding:0; margin:0; flex-wrap:nowrap;
   }
   .site-nav-center a{
-    text-decoration:none;
-    color:#122B2A;
-    font-size:14px;
-    font-weight:500;
-    letter-spacing:0.03em;
-    white-space:nowrap;
+    text-decoration:none; color:var(--charcoal); font-size:14px;
+    font-weight:500; letter-spacing:0.03em; white-space:nowrap;
     transition:opacity 0.2s ease;
   }
   .site-nav-center a:hover{ opacity:0.6; }
   .site-nav-center a.active{
-    font-weight:700;
-    border-bottom:2px solid #006D6B;
-    padding-bottom:2px;
+    font-weight:700; border-bottom:2px solid var(--accent); padding-bottom:2px;
   }
   .header-contact{
-    font-size:13px;
-    color:#122B2A;
-    font-weight:500;
-    text-align:right;
-    white-space:nowrap;
+    font-size:13px; color:var(--charcoal); font-weight:500;
+    text-align:right; white-space:nowrap;
   }
 
-  /* ---------- 1. Hero ---------- */
-  .about-hero{
-    background:var(--white);
-    padding:80px 80px 56px;
+  /* ====== 1. Hero ====== */
+  .hero{
+    padding:100px 60px 80px;
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:80px; align-items:center;
   }
-  .about-hero h1{
-    font-family:'Playfair Display', serif;
-    font-weight:700;
-    font-size:clamp(40px, 6vw, 68px);
-    line-height:1.1;
-    letter-spacing:0;
-    color:var(--charcoal);
-    max-width:15ch;
-    margin-bottom:28px;
+  .hero-left .eyebrow{
+    font-size:11px; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.22em; color:var(--accent); margin-bottom:18px;
   }
-  .about-hero p{
-    font-family:'Inter', sans-serif;
-    font-size:clamp(18px, 2vw, 22px);
-    line-height:1.7;
-    color:var(--gray-mid);
-    max-width:90ch;
+  .hero-left h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(36px,5vw,62px);
+    font-weight:700; color:var(--dark); line-height:1.1; margin-bottom:28px;
   }
-
-  /* ---------- 2. Operations statement (full width) ---------- */
-  .about-ops{
-    padding:0 80px 48px;
+  .hero-left h1 span{ color:var(--accent); }
+  .hero-left p{
+    font-size:17px; line-height:1.85; color:var(--slate); margin-bottom:36px;
   }
-  .about-ops p{
-    font-family:'Inter', sans-serif;
-    font-weight:500;
-    font-size:clamp(20px, 2.4vw, 28px);
-    line-height:1.6;
-    letter-spacing:-0.01em;
-    color:var(--charcoal);
-    max-width:90ch;
+  .btn{
+    display:inline-block; padding:15px 36px;
+    font-family:'Inter',sans-serif; font-size:13px;
+    font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+    text-decoration:none; border-radius:0; cursor:pointer;
+    transition:opacity 0.2s ease;
   }
-
-  /* ---------- Mission hero panel ---------- */
-  .mission-panel{
-    position:relative;
-    width:100%;
-    min-height:340px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:64px 80px;
-    margin-bottom:64px;
-    background:
-      linear-gradient(rgba(18,43,42,0.5), rgba(18,43,42,0.5)),
-      url('stepwell-mission-bg.png') center/cover no-repeat;
+  .btn-teal{ background:var(--accent); color:#fff; }
+  .btn-teal:hover{ opacity:0.85; }
+  .hero-right{
+    background:var(--light); border-radius:16px;
+    padding:40px 36px; border:1px solid var(--hairline);
   }
-  .mission-panel .mission-content{
-    max-width:80ch;
-    margin:0 auto;
+  .hero-right blockquote{
+    font-family:'Playfair Display',serif;
+    font-size:22px; font-style:italic; font-weight:400;
+    color:var(--dark); line-height:1.6; margin-bottom:20px;
   }
-  .mission-panel .label{
-    font-family:'Inter', sans-serif;
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.2em;
-    color:var(--white);
-    margin-bottom:20px;
-  }
-  .mission-panel .quote-text{
-    font-family:'Inter', sans-serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(20px, 2.6vw, 30px);
-    line-height:1.6;
-    color:var(--white);
-    margin-bottom:20px;
-  }
-  .mission-panel .quote-attribution{
-    font-family:'Inter', sans-serif;
-    font-style:normal;
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:0.05em;
-    color:var(--white);
-    opacity:0.85;
+  .hero-right cite{
+    font-size:13px; font-weight:700; color:var(--accent);
+    font-style:normal; text-transform:uppercase; letter-spacing:0.1em;
   }
 
-  /* ---------- 3. Four-pillar grid ---------- */
-  .pillars{
-    border-top:1px solid var(--hairline);
-    padding:64px 80px;
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:56px 48px;
+  /* ====== 2. Stats Bar ====== */
+  .stats-bar{
+    background:var(--accent); padding:0;
   }
-  .pillar h3{
-    font-family:'Inter', sans-serif;
-    font-weight:800;
-    font-size:22px;
-    letter-spacing:-0.01em;
-    color:var(--accent);
-    margin-bottom:16px;
+  .stats-inner{
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(4,1fr);
   }
-  .pillar p{
-    font-family:'Inter', sans-serif;
-    font-size:15px;
-    line-height:1.8;
-    color:var(--gray-mid);
-    max-width:40ch;
+  .stat-item{
+    padding:40px 28px; text-align:center;
+    border-right:1px solid rgba(255,255,255,0.15);
   }
-
-  /* ---------- 4. Action statement + commitments grid ---------- */
-  .action-statement{
-    padding:0 80px 40px;
+  .stat-item:last-child{ border-right:none; }
+  .stat-emoji{ font-size:28px; margin-bottom:8px; }
+  .stat-number{
+    font-family:'Playfair Display',serif;
+    font-size:38px; font-weight:700; color:#fff; line-height:1;
+    margin-bottom:6px;
   }
-  .action-statement p{
-    font-family:'Inter', sans-serif;
-    font-weight:500;
-    font-size:clamp(20px, 2.4vw, 28px);
-    line-height:1.6;
-    letter-spacing:-0.01em;
-    color:var(--charcoal);
-    max-width:90ch;
+  .stat-label{
+    font-size:12px; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.1em; color:rgba(255,255,255,0.75);
   }
 
-  .commitments-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
-    padding:0 80px 64px;
+  /* ====== 3. Mission ====== */
+  .mission{
+    max-width:1080px; margin:0 auto;
+    padding:80px 60px;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:80px; align-items:center;
   }
-  .commitment-card{
-    display:flex;
-    align-items:center;
-    gap:24px;
-    padding:24px;
-    border:1px solid var(--stone);
-    border-radius:12px;
+  .mission h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(26px,3.5vw,40px);
+    font-weight:700; color:var(--dark); margin-bottom:24px;
   }
-  .commitment-card:last-child{
-    grid-column:span 1;
+  .mission p{
+    font-size:16px; line-height:1.85; color:var(--slate); margin-bottom:16px;
   }
-  .commitment-number{
-    flex-shrink:0;
-    width:64px;
-    height:96px;
-    border-radius:12px;
-    background:var(--stone);
-    color:var(--accent);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Inter', sans-serif;
-    font-weight:800;
-    font-size:24px;
+  .divider{ width:48px; height:3px; background:var(--accent); margin-bottom:28px; }
+
+  /* ====== 4. Why Landlords Choose Us ====== */
+  .why{ background:var(--light); padding:80px 60px; }
+  .why-inner{ max-width:1080px; margin:0 auto; }
+  .why h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(26px,3.5vw,40px);
+    font-weight:700; color:var(--dark);
+    margin-bottom:12px; text-align:center;
   }
-  .commitment-label{
-    font-family:'Inter', sans-serif;
-    font-weight:700;
-    font-size:18px;
-    color:var(--charcoal);
+  .why-sub{
+    font-size:16px; color:var(--slate); text-align:center;
+    margin-bottom:56px; max-width:58ch; margin-left:auto; margin-right:auto;
+  }
+  .why-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:20px;
+  }
+  .why-card{
+    background:var(--white); border:1px solid var(--hairline);
+    border-radius:14px; padding:28px 20px; text-align:center;
+    transition:box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .why-card:hover{
+    box-shadow:0 8px 28px rgba(0,109,107,0.1);
+    border-color:var(--accent);
+  }
+  .why-icon{
+    width:52px; height:52px; border-radius:12px;
+    background:var(--stone); display:flex;
+    align-items:center; justify-content:center;
+    margin:0 auto 16px; font-size:24px;
+  }
+  .why-card h3{
+    font-size:14px; font-weight:700; color:var(--dark);
+    margin-bottom:8px; line-height:1.3;
+  }
+  .why-card p{
+    font-size:12px; line-height:1.65; color:var(--slate);
   }
 
-  /* ---------- 5. Grounding outro ---------- */
-  .outro{
-    background:var(--gray-bg);
-    padding:80px 80px;
+  /* ====== 5. Our Commitment ====== */
+  .commitment-wrap{
+    padding:80px 60px; background:var(--white);
   }
-  .outro h2{
-    font-family:'Playfair Display', serif;
-    font-weight:700;
-    font-size:clamp(32px, 4vw, 44px);
-    letter-spacing:0;
-    color:var(--charcoal);
-    max-width:20ch;
-    margin-bottom:32px;
+  .commitment{
+    max-width:860px; margin:0 auto;
+    background:var(--dark); border-radius:20px;
+    padding:56px 64px; text-align:center; position:relative; overflow:hidden;
   }
-  .outro p{
-    font-family:'Inter', sans-serif;
-    font-size:18px;
-    line-height:1.85;
-    color:var(--gray-mid);
-    max-width:68ch;
+  .commitment::before{
+    content:"";
+    position:absolute; top:-80px; right:-80px;
+    width:240px; height:240px; border-radius:50%;
+    background:rgba(255,255,255,0.04); pointer-events:none;
+  }
+  .commitment::after{
+    content:"";
+    position:absolute; bottom:-60px; left:-60px;
+    width:180px; height:180px; border-radius:50%;
+    background:rgba(255,255,255,0.04); pointer-events:none;
+  }
+  .commitment .label{
+    font-size:11px; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.22em; color:rgba(255,255,255,0.55); margin-bottom:20px;
+  }
+  .commitment h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(24px,3.5vw,36px);
+    font-weight:700; color:#fff; line-height:1.25;
+    margin-bottom:24px;
+  }
+  .commitment p{
+    font-size:16px; line-height:1.85;
+    color:rgba(255,255,255,0.82);
+    max-width:58ch; margin:0 auto 32px;
+  }
+  .commitment-pillars{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:16px; margin-top:40px;
+  }
+  .pillar{
+    background:rgba(255,255,255,0.07); border-radius:10px;
+    padding:20px 16px; text-align:center;
+  }
+  .pillar-icon{ font-size:22px; margin-bottom:8px; }
+  .pillar-name{
+    font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.1em; color:rgba(255,255,255,0.8);
   }
 
-  /* ---------- Footer ---------- */
-  .site-footer{
-    width:100%;
-    background:var(--white);
-    border-top:3px solid var(--accent);
+  /* ====== 6. Team / Values ====== */
+  .values{ background:var(--light); padding:80px 60px; }
+  .values-inner{ max-width:1080px; margin:0 auto; }
+  .values h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(26px,3.5vw,40px);
+    font-weight:700; color:var(--dark);
+    margin-bottom:12px;
   }
+  .values-sub{
+    font-size:16px; color:var(--slate);
+    margin-bottom:48px; max-width:58ch;
+  }
+  .values-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+  }
+  .value-item{
+    padding:32px 28px; border-left:3px solid var(--accent); background:var(--white);
+    border-radius:0 12px 12px 0;
+  }
+  .value-item h3{
+    font-size:17px; font-weight:700; color:var(--dark); margin-bottom:10px;
+  }
+  .value-item p{ font-size:14px; line-height:1.75; color:var(--slate); }
 
+  /* ====== 7. CTA ====== */
+  .cta-footer{
+    background:var(--accent); text-align:center; padding:80px 40px;
+  }
+  .cta-footer h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(26px,4vw,42px);
+    font-weight:700; color:#fff; margin-bottom:16px;
+  }
+  .cta-footer p{
+    font-size:17px; color:rgba(255,255,255,0.85);
+    margin-bottom:40px; max-width:52ch;
+    margin-left:auto; margin-right:auto; line-height:1.7;
+  }
+  .btn-white{ background:#fff; color:var(--accent); }
+  .btn-white:hover{ opacity:0.9; }
+
+  /* ====== Footer ====== */
+  .site-footer{ background:#fff; border-top:3px solid var(--accent); }
   .footer-top{
-    max-width:1100px;
-    margin:0 auto;
-    padding:56px 60px;
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px;
+    max-width:1100px; margin:0 auto; padding:56px 60px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:40px;
   }
-
   .footer-column h3{
-    font-family:'Inter', sans-serif;
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.15em;
-    color:var(--accent);
-    margin-bottom:20px;
+    font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.15em; color:var(--accent); margin-bottom:20px;
   }
-
-  .footer-column ul{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-
+  .footer-column ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
   .footer-column a{
-    text-decoration:none;
-    color:#3f4a49;
-    font-family:'Inter', sans-serif;
-    font-size:14px;
+    text-decoration:none; color:var(--slate); font-size:14px;
     transition:color 0.2s ease;
   }
-  .footer-column a:hover{
-    color:var(--accent);
-  }
-
-  .footer-column .footer-text{
-    font-family:'Inter', sans-serif;
-    font-size:14px;
-    color:#3f4a49;
-    line-height:1.6;
-  }
-
-  .footer-bottom{
-    width:100%;
-    border-top:1px solid var(--stone);
-  }
+  .footer-column a:hover{ color:var(--accent); }
+  .footer-text{ font-size:14px; color:var(--slate); line-height:1.6; }
+  .footer-bottom{ border-top:1px solid var(--stone); }
   .footer-bottom p{
-    text-align:center;
-    font-family:'Inter', sans-serif;
-    font-size:12px;
-    color:#9aa6a5;
-    padding:24px 0;
+    text-align:center; font-size:12px; color:#9aa6a5; padding:24px 0;
   }
 
-  /* ============ Responsive ============ */
-  @media (max-width: 900px){
-    .site-header{ padding:12px 28px; }
-    
-
-    .about-hero{ padding:56px 28px 40px; }
-    .about-ops{ padding:0 28px 40px; }
-    .mission-panel{
-      padding:48px 28px;
-      min-height:280px;
-      margin-bottom:48px;
-    }
-    .pillars{
-      grid-template-columns:1fr;
-      gap:48px;
-      padding:48px 28px;
-    }
-    .action-statement{
-      padding:0 28px 24px;
-    }
-    .commitments-grid{
-      grid-template-columns:1fr;
-      gap:16px;
-      padding:0 28px 48px;
-    }
-    .commitment-card:last-child{
-      grid-column:auto;
-    }
-    .outro{ padding:48px 28px; }
-
-    .footer-top{
-      grid-template-columns:1fr;
-      gap:32px;
-      padding:48px 28px;
-    }
+  /* ====== Responsive ====== */
+  @media(max-width:900px){
+    .hero, .mission{ grid-template-columns:1fr; gap:36px; padding:60px 28px; }
+    .stats-inner{ grid-template-columns:repeat(2,1fr); }
+    .stat-item{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.15); }
+    .why{ padding:60px 28px; }
+    .why-grid{ grid-template-columns:repeat(3,1fr); }
+    .commitment-wrap{ padding:60px 28px; }
+    .commitment{ padding:40px 28px; }
+    .commitment-pillars{ grid-template-columns:1fr; gap:10px; }
+    .values{ padding:60px 28px; }
+    .values-grid{ grid-template-columns:1fr; }
+    .footer-top{ grid-template-columns:1fr; gap:32px; padding:48px 28px; }
   }
-
-  @media (max-width: 600px){
-    .site-header{ padding:12px 28px; }
-    .site-nav ul{
-      justify-content:flex-start;
-      gap:16px 22px;
-    }
+  @media(max-width:600px){
+    .why-grid{ grid-template-columns:repeat(2,1fr); }
+    .stats-inner{ grid-template-columns:1fr 1fr; }
   }
-
-  @media (max-width: 768px){
+  @media(max-width:768px){
     .site-header{
       grid-template-columns:auto 1fr;
       grid-template-rows:auto auto;
-      padding:12px 20px;
-      gap:8px;
+      padding:12px 20px; gap:8px;
     }
     .logo{ grid-row:1; grid-column:1; }
     .logo-img{ height:52px; }
     .header-contact{ display:none; }
     .site-nav-center{
-      grid-row:2;
-      grid-column:1 / -1;
-      justify-content:flex-start;
-      gap:12px;
-      flex-wrap:wrap;
-      padding-bottom:6px;
+      grid-row:2; grid-column:1 / -1;
+      justify-content:flex-start; gap:12px;
+      flex-wrap:wrap; padding:8px 0 6px;
       border-top:1px solid #eef3f2;
-      padding-top:8px;
     }
     .site-nav-center a{ font-size:12px; }
-  }
-
-  @media (max-width: 480px){
-    .site-nav-center{ gap:8px 14px; }
-    .site-nav-center a{ font-size:11px; }
-    .logo-img{ height:44px; }
   }
 </style>
 </head>
 <body>
 
-      <!-- Header -->
-        <header class="site-header">
-    <a class="logo" href="index.html">
-      <img src="Stepwell_Housing_Logo.png" alt="Stepwell Housing" class="logo-img">
-    </a>
-    <ul class="site-nav-center">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About Us</a></li>
-      <li><a href="landlords.html">Landlords</a></li>
-      <li><a href="maintenance.html">Maintenance and Repairs</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-    <div class="header-contact">info@stepwellhousing.com</div>
-  </header>
+<!-- Header -->
+<header class="site-header">
+  <a class="logo" href="index.html">
+    <img src="Stepwell_Housing_Logo.png" alt="Stepwell Housing" class="logo-img">
+  </a>
+  <ul class="site-nav-center">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="landlords.html">Landlords</a></li>
+    <li><a href="maintenance.html">Maintenance and Repairs</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+  <div class="header-contact">info@stepwellhousing.com</div>
+</header>
 
-      <!-- Navigation -->
+<!-- 1. Hero -->
+<section>
+  <div class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">About Stepwell Housing</p>
+      <h1>Property Expertise.<br><span>People First.</span></h1>
+      <p>Stepwell Housing is a Croydon-based property management company providing guaranteed rent, full property management and responsive maintenance services to landlords across South London.</p>
+      <a href="contact.html" class="btn btn-teal">Get in Touch</a>
+    </div>
+    <div class="hero-right">
+      <blockquote>"We don't just manage properties — we build lasting partnerships grounded in trust, transparency and genuine care."</blockquote>
+      <cite>Tenesh Deva — Co-Founder, Stepwell Housing</cite>
+    </div>
+  </div>
+</section>
 
-      <!-- 1. Hero -->
-      <section class="about-hero">
-        <h1>About Stepwell Housing.</h1>
-        <p>Stepwell Housing provides safe, compliant and professionally managed accommodation solutions for local authorities, landlords and the communities they serve.</p>
-      </section>
+<!-- 2. Stats Bar (At a Glance) -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-emoji">🏠</div>
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Properties Managed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-emoji">📍</div>
+      <div class="stat-number">10+</div>
+      <div class="stat-label">London Boroughs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-emoji">✅</div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Rent Paid On Time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-emoji">🤝</div>
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Landlord Partners</div>
+    </div>
+  </div>
+</section>
 
-      <!-- 2. Operations statement -->
-      <section class="about-ops">
-        <p>We work closely with property owners and local authorities to deliver high-quality housing that offers stability for residents, reliable returns for landlords and professional management throughout.</p>
-      </section>
+<!-- 3. Mission -->
+<section>
+  <div class="mission">
+    <div>
+      <div class="divider"></div>
+      <h2>Who We Are</h2>
+      <p>Founded in Croydon, Stepwell Housing was built on the belief that property management should be straightforward, reliable and genuinely stress-free for landlords. We work directly with local authorities and housing bodies to provide quality accommodation for individuals and families.</p>
+      <p>Our team brings together expertise in property management, compliance, maintenance and resident welfare — all under one roof. Every landlord who works with us benefits from a dedicated point of contact, not a call centre.</p>
+    </div>
+    <div>
+      <div class="divider"></div>
+      <h2>What We Do</h2>
+      <p>We specialise in three core services: guaranteed rent schemes, fully managed property services and in-house maintenance and repairs. Together, these create a complete, hands-off solution for landlords who want consistent income without the hassle of day-to-day management.</p>
+      <p>Whether you own a single house or a portfolio of properties, our approach is the same — protect your asset, support your residents and pay you on time, every time.</p>
+    </div>
+  </div>
+</section>
 
-      <!-- Mission hero panel -->
-      <section class="mission-panel">
-        <div class="mission-content">
-          <p class="label">Our Mission</p>
-          <p class="quote-text">&ldquo;To provide safe, well-maintained and professionally managed accommodation that supports residents, delivers value to landlords and contributes to stronger communities.&rdquo;</p>
-          <p class="quote-attribution">Tenesh Deva &mdash; Co-Founder</p>
-        </div>
-      </section>
+<!-- 4. Why Landlords Choose Us -->
+<section class="why">
+  <div class="why-inner">
+    <h2>Why Landlords Choose Us</h2>
+    <p class="why-sub">Five reasons landlords across South London trust Stepwell Housing with their properties.</p>
+    <div class="why-grid">
 
-      <!-- 3. Four-pillar grid -->
-      <section class="pillars">
-        <div class="pillar">
-          <h3>Integrity</h3>
-          <p>We act honestly and transparently in every relationship — with landlords, local authorities and the residents who call our properties home.</p>
-        </div>
-        <div class="pillar">
-          <h3>Quality</h3>
-          <p>Every property is maintained to a high standard, with regular inspections and prompt repairs that keep homes safe and comfortable.</p>
-        </div>
-        <div class="pillar">
-          <h3>Partnership</h3>
-          <p>We work alongside local authorities and property owners as long-term partners, built on trust and consistent, reliable service.</p>
-        </div>
-        <div class="pillar">
-          <h3>Responsibility</h3>
-          <p>We meet our obligations on safety, compliance and energy standards, and hold ourselves accountable to the communities we serve.</p>
-        </div>
-      </section>
+      <div class="why-card">
+        <div class="why-icon">💷</div>
+        <h3>Guaranteed Rent</h3>
+        <p>Fixed monthly payments, paid on time, regardless of occupancy or tenant circumstances.</p>
+      </div>
 
-      <!-- 4. Action statement + commitments -->
-      <section class="action-statement">
-        <p>At Stepwell Housing, we believe quality accommodation provides more than just a place to live. It creates stability, dignity and opportunity. We are committed to:</p>
-      </section>
+      <div class="why-card">
+        <div class="why-icon">🔑</div>
+        <h3>Fully Managed</h3>
+        <p>We handle everything from tenant placement and communication to inspections and reporting.</p>
+      </div>
 
-      <section class="commitments-grid">
-        <div class="commitment-card">
-          <span class="commitment-number">01</span>
-          <span class="commitment-label">Safe, compliant homes</span>
-        </div>
-        <div class="commitment-card">
-          <span class="commitment-number">02</span>
-          <span class="commitment-label">Responsive management</span>
-        </div>
-        <div class="commitment-card">
-          <span class="commitment-number">03</span>
-          <span class="commitment-label">Resident wellbeing</span>
-        </div>
-        <div class="commitment-card">
-          <span class="commitment-number">04</span>
-          <span class="commitment-label">Energy efficiency</span>
-        </div>
-        <div class="commitment-card">
-          <span class="commitment-number">05</span>
-          <span class="commitment-label">Long-term partnerships</span>
-        </div>
-      </section>
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <h3>In-House Maintenance</h3>
+        <p>Our own maintenance team responds quickly, works to a high standard and keeps you informed.</p>
+      </div>
 
-      <!-- 5. Grounding outro -->
-      <section class="outro">
-        <h2>Supporting Communities.</h2>
-        <p>Good housing helps create stronger communities. When homes are safe, well managed and properly maintained, residents are more settled, landlords see consistent returns and local authorities can rely on a stable supply of quality accommodation. Our goal is simple: to provide safe, compliant and professionally managed accommodation that benefits people, properties and communities.</p>
-      </section>
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <h3>Compliance Covered</h3>
+        <p>Gas safety, electrical checks, HMO licensing and more — we manage all legal requirements.</p>
+      </div>
 
-      <!-- Footer -->
-      <footer class="site-footer">
-        <div class="footer-top">
+      <div class="why-card">
+        <div class="why-icon">📞</div>
+        <h3>Direct Contact</h3>
+        <p>One dedicated point of contact for every landlord. No call centres. No hold music.</p>
+      </div>
 
-          <!-- Column 1: Menu -->
-          <div class="footer-column">
-            <h3>Menu</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-          </div>
+    </div>
+  </div>
+</section>
 
-          <!-- Column 2: Services -->
-          <div class="footer-column">
-            <h3>Services</h3>
-            <ul>
-              <li><a href="contact.html">Guaranteed Rent</a></li>
-              <li><a href="contact.html">Fully Managed Service</a></li>
-              <li><a href="contact.html">In-House Maintenance</a></li>
-            </ul>
-          </div>
+<!-- 5. Our Commitment -->
+<section class="commitment-wrap">
+  <div class="commitment">
+    <p class="label">Our Commitment</p>
+    <h2>Quality accommodation creates stability, dignity and opportunity.</h2>
+    <p>At Stepwell Housing, we believe the quality of a home shapes the quality of a life. That belief drives every decision we make — from the properties we accept onto our books to the standards we hold our maintenance team to.</p>
+    <div class="commitment-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🏡</div>
+        <div class="pillar-name">Safe, Compliant Homes</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-name">Responsive Management</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💚</div>
+        <div class="pillar-name">Resident Wellbeing</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🌿</div>
+        <div class="pillar-name">Energy Efficiency</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <div class="pillar-name">Long-term Partnerships</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <div class="pillar-name">Full Transparency</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <!-- Column 3: Get in Touch -->
-          <div class="footer-column">
-            <h3>Get in Touch</h3>
-            <ul>
-              <li class="footer-text">07424119632</li>
-              <li class="footer-text">Info@stepwellhousing.com</li>
-              <li class="footer-text">Airport House Business Centre, 265 Purley Way, Croydon CR0 0XZ</li>
-            </ul>
-          </div>
+<!-- 6. Values -->
+<section class="values">
+  <div class="values-inner">
+    <h2>How We Work</h2>
+    <p class="values-sub">Three principles that underpin everything we do at Stepwell Housing.</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <h3>Trust</h3>
+        <p>Landlords hand us the keys to their assets. We take that responsibility seriously — acting with integrity, communicating openly and delivering what we promise, every time.</p>
+      </div>
+      <div class="value-item">
+        <h3>Consistency</h3>
+        <p>Reliable rent. Reliable responses. Reliable reporting. We believe the best partnerships are built on predictability — so landlords always know exactly where they stand.</p>
+      </div>
+      <div class="value-item">
+        <h3>Care</h3>
+        <p>For the properties we manage, for the residents who call them home and for the landlords who trust us — care is at the centre of every interaction we have.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        </div>
+<!-- 7. CTA -->
+<section class="cta-footer">
+  <h2>Ready to Work With Us?</h2>
+  <p>Whether you're a landlord looking for guaranteed rent or simply want to find out more about how we work, we'd love to hear from you.</p>
+  <a href="contact.html" class="btn btn-white">Get in Touch</a>
+</section>
 
-        <div class="footer-bottom">
-          <p>&copy; 2026 Stepwell Housing. All rights reserved.</p>
-        </div>
-      </footer>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-column">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="landlords.html">Guaranteed Rent</a></li>
+        <li><a href="landlords.html">Fully Managed Service</a></li>
+        <li><a href="maintenance.html">Maintenance &amp; Repairs</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Get in Touch</h3>
+      <ul>
+        <li class="footer-text">07424119632</li>
+        <li class="footer-text">Info@stepwellhousing.com</li>
+        <li class="footer-text">Airport House Business Centre, 265 Purley Way, Croydon CR0 0XZ</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Stepwell Housing. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>
